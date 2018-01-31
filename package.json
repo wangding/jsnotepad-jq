@@ -1,0 +1,29 @@
+{
+  "name": "jsnotepad",
+  "version": "0.0.1",
+  "description": "Windows 记事本网页版",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangding/jsnotepad.git"
+  },
+  "author": "wangding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangding/jsnotepad/issues"
+  },
+  "homepage": "https://github.com/wangding/jsnotepad#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-eslint": "0.0.5",
+    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-imagemin": "^2.0.1",
+    "grunt-htmlhint": "^0.9.13"
+  }
+}
