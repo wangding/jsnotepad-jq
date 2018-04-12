@@ -15,5 +15,5 @@ np.bLineWrap = false;       // 是否换行
 $(function() {
   $menuBar.show();
   $editor.show();
-  $statusBar.show();
+  $statusBar.init({'row': 1, 'col': 1});
 });

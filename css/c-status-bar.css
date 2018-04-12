@@ -19,6 +19,15 @@
 }
 
 .notepad-statusbar .right-panel p {
-  line-height: 22px;
+  line-height: 19px;
   text-align: center;
+  cursor: default;
+
+  /* 不让用户可以选择状态栏中的文本 */
+  
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
 }
