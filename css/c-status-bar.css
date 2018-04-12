@@ -1,0 +1,24 @@
+.notepad-statusbar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 22px;
+  background: #f0f0f0;
+  box-sizing: border-box;
+  border-top: 1px solid #d7d7d7;
+}
+
+.notepad-statusbar .right-panel {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  width: 126px;
+  height: 19px;
+  border-left: 1px solid #d7d7d7;
+}
+
+.notepad-statusbar .right-panel p {
+  line-height: 22px;
+  text-align: center;
+}
