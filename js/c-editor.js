@@ -1,6 +1,14 @@
 var $editor = (function() {
+  var $DOM = $(''
+      + '<div class="notepad-editor">'
+        + '<textarea></textarea>'
+      + '</div>');
+  
+  var $textArea = $DOM.find('textarea');
+    
   function show() {
-    $(np.config.appContainer).append('<div class="notepad-editor">编辑窗口</div>');
+    $(np.config.appContainer).append($DOM);
+    $textArea.trigger('focus');
   }
 
   return {show: show};
