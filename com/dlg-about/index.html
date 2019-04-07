@@ -3,10 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>关于对话框布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
   <link rel="stylesheet" href="dlg-about.css">
 </head>
 <body>
-  
+<div class="notepad-app">
+  <div class="notepad-dlg-about">
+    <div class="titlebar">
+      <p>关于“记事本”</p>
+      <span>✖</span>
+    </div>
+    <div class="main">
+      <h1>JSNotepad</h1>
+      <hr>
+      <img src="../../images/notepad-icon-32.png" alt="JSNotepad">
+      <div class="info">
+        <p>作者：王顶</p>
+        <p>QQ：408542507</p>
+        <p>仓库地址：<a href="https://github.com/wangding/jsnotepad/" target="_blank">https://github.com/wangding/jsnotepad/</a></p>
+      </div>
+      <input type="button" value="确定">
+    </div>
+  </div>
+</div>
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="dlg-about.js"></script>
 </body>

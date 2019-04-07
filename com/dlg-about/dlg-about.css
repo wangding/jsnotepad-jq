@@ -1,3 +1,74 @@
-body {
-  background: green;
+.notepad-dlg-about {
+  position: relative;
+  height: 400px;
+  width: 600px;
+  box-sizing: border-box;
+  border: 1px solid #0f7fd6;
+  cursor: default;
+  user-select: none;
 }
+
+.notepad-dlg-about .titlebar {
+  height: 40px;
+  font-size: 1.3em;
+}
+
+.notepad-dlg-about .titlebar p {
+  position: absolute;
+  left: 10px;
+  line-height: 40px;
+}
+
+.notepad-dlg-about .titlebar span {
+  position: absolute;
+  width: 40px;
+  line-height: 40px;
+  right: 0;
+  color: gray;
+  text-align: center;
+}
+
+.notepad-dlg-about .titlebar span:hover {
+  background-color: red;
+  color: white;
+}
+
+.notepad-dlg-about .main {
+  position: relative;
+  height: 358px;
+  background-color: #f0f0f0;
+}
+
+.notepad-dlg-about .main h1 {
+  line-height: 100px;
+  text-align: center;
+  color: #0077c8;
+  font-size: 4em;
+}
+
+.notepad-dlg-about .main hr {
+  width: 95%;
+}
+
+.notepad-dlg-about .main img {
+  position: absolute;
+  left: 20px;
+  top: 150px;
+}
+.notepad-dlg-about .main .info {
+  position: absolute;
+  left: 80px;
+  top: 150px;
+  height: 100px;
+  line-height: 20px;
+  font-size: 1.2em;
+}
+
+.notepad-dlg-about .main input[type="button"] {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 110px;
+  height: 30px;
+}
+
