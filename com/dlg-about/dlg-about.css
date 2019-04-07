@@ -1,3 +1,83 @@
-body {
-  background: green;
+.notepad-dlg-about {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.notepad-dlg-about .dialogbox {
+  border: 1px solid #0f7fd6;
+  box-shadow: 10px 10px 10px #d6d6d6;
+  box-sizing: border-box;
+  cursor: default;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+  user-select: none;
+  width: 536px;
+}
+
+.notepad-dlg-about .titlebar {
+  background-color: white;
+  font-size: 1.3em;
+  height: 30px;
+}
+
+.notepad-dlg-about .titlebar .title {
+  left: 10px;
+  line-height: 30px;
+  position: absolute;
+}
+
+.notepad-dlg-about .titlebar .close-btn {
+  color: gray;
+  line-height: 30px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 30px;
+}
+
+.notepad-dlg-about .titlebar .close-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+.notepad-dlg-about .main {
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+  height: 368px;
+  padding: 15px;
+  position: relative;
+}
+
+.notepad-dlg-about .main .slogan {
+  color: #0077c8;
+  font-size: 4em;
+  line-height: 100px;
+  text-align: center;
+}
+
+.notepad-dlg-about .main .app-logo {
+  margin: 20px 10px;
+}
+
+.notepad-dlg-about .main .info {
+  display: inline-block;
+  font-size: 1.2em;
+  height: 100px;
+  left: 80px;
+  line-height: 20px;
+  margin-left: 5px;
+}
+
+.notepad-dlg-about .main .btn-ok {
+  bottom: 16px;
+  height: 27px;
+  position: absolute;
+  right: 12px;
+  width: 85px;
 }
