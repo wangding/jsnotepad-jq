@@ -1,74 +1,83 @@
 .notepad-dlg-about {
-  position: relative;
-  height: 400px;
-  width: 600px;
-  box-sizing: border-box;
+  background-color: #00800000;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.notepad-dlg-about .dialogbox {
   border: 1px solid #0f7fd6;
+  box-sizing: border-box;
   cursor: default;
+  height: 400px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
   user-select: none;
+  width: 600px;
 }
 
 .notepad-dlg-about .titlebar {
-  height: 40px;
+  background-color: white;
   font-size: 1.3em;
+  height: 40px;
 }
 
-.notepad-dlg-about .titlebar p {
-  position: absolute;
+.notepad-dlg-about .titlebar .title {
   left: 10px;
   line-height: 40px;
-}
-
-.notepad-dlg-about .titlebar span {
   position: absolute;
-  width: 40px;
-  line-height: 40px;
-  right: 0;
-  color: gray;
-  text-align: center;
 }
 
-.notepad-dlg-about .titlebar span:hover {
+.notepad-dlg-about .titlebar .close-btn {
+  color: gray;
+  line-height: 40px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 40px;
+}
+
+.notepad-dlg-about .titlebar .close-btn:hover {
   background-color: red;
   color: white;
 }
 
 .notepad-dlg-about .main {
-  position: relative;
-  height: 358px;
   background-color: #f0f0f0;
+  box-sizing: border-box;
+  height: 358px;
+  padding: 15px;
+  position: relative;
 }
 
-.notepad-dlg-about .main h1 {
-  line-height: 100px;
-  text-align: center;
+.notepad-dlg-about .main .slogan {
   color: #0077c8;
   font-size: 4em;
+  line-height: 100px;
+  text-align: center;
 }
 
-.notepad-dlg-about .main hr {
-  width: 95%;
+.notepad-dlg-about .main .app-logo {
+  margin: 20px 10px;
 }
 
-.notepad-dlg-about .main img {
-  position: absolute;
-  left: 20px;
-  top: 150px;
-}
 .notepad-dlg-about .main .info {
-  position: absolute;
-  left: 80px;
-  top: 150px;
-  height: 100px;
-  line-height: 20px;
+  display: inline-block;
   font-size: 1.2em;
+  height: 100px;
+  left: 80px;
+  line-height: 20px;
+  margin-left: 5px;
 }
 
-.notepad-dlg-about .main input[type="button"] {
+.notepad-dlg-about .main .btn-ok {
+  bottom: 20px;
+  height: 30px;
   position: absolute;
   right: 20px;
-  bottom: 20px;
   width: 110px;
-  height: 30px;
 }
-
