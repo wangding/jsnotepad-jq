@@ -2,12 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>转到对话框布局和测试页面</title>
+  <title>关于对话框布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
   <link rel="stylesheet" href="dlg-goto.css">
+  <link rel="icon" href="https://i.wangding.in/favicon.ico" sizes="48x48" type="image/png">
 </head>
 <body>
-  
+<div class="test">
+  <input type="button" value="弹出对话框">
+</div>
+<!--
+<div class="notepad-dlg-goto">
+  <div class="dialogbox">
+    <div class="titlebar">
+      <p class="title">转到指定行</p>
+      <span class="close-btn">✖</span>
+    </div>
+    <div class="main">
+      <label for="">行号(L):</label><br>
+      <input class="txt-line-num" type="text" autofocus><br>
+      <input class="btn-goto" type="button" value="转到">
+      <input class="btn-cancel" type="button" value="取消">
+    </div>
+  </div>
+</div>
+-->
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="dlg-goto.js"></script>
+<script>
+$(function() {
+  var $btnTest = $('div.test>input[type="button"]');
+
+  $btnTest.click(function() {
+    $dlgGoto.show({
+      lineNum: 4,
+      totalLine: 5,
+      gotoHandler: function(){ console.log("goto btn click! GOTO 4 lines.") } });
+  });
+});
+</script>
 </body>
 </html>
