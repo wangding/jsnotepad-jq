@@ -4,10 +4,36 @@
   <meta charset="UTF-8">
   <title>状态栏布局和测试页面</title>
   <link rel="stylesheet" href="statusbar.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
 </head>
 <body>
-  
+<input id="btn-test" type="button" value="隐藏状态栏"><br>
+<label>行数：<input type="text" id="row"></label>
+<label>列数：<input type="text" id="col"></label>
+<input type="button" value="设置行列数" id="set-rc">
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="statusbar.js"></script>
+<script>
+$(function() {
+    var bVisable = true;
+    $statusBar.init({row: 300, col: 100});
+
+    var $btnTest = $('#btn-test');
+
+    $btnTest.click(function() {
+      bVisable = !bVisable;
+      $statusBar.display(bVisable);
+
+      var title = bVisable ? '隐藏状态栏' : '显示状态栏';
+      $btnTest.val(title);
+    });
+
+    var $btnSetRC = $('#set-rc');
+
+    $btnSetRC.click(function() {
+      $statusBar.setRowCol($('#row').val(), $('#col').val());
+    });
+});
+</script>
 </body>
 </html>
