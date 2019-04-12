@@ -1,3 +1,51 @@
-body {
-  background: green;
+.notepad-dlg-search {
+  z-index: 10;
+}
+
+.notepad-dlg-search .dialogbox {
+  height: 164px;
+  width: 414px;
+}
+
+.notepad-dlg-search .main {
+  height: 132px;
+  padding: 6px;
+}
+
+.notepad-dlg-search .main .txt-content {
+  box-sizing: border-box;
+  height: 26px;
+  margin: 10px;
+  width: 224px;
+}
+
+.notepad-dlg-search .main .btn-search {
+  position: absolute;
+  right: 8px;
+  top: 12px;
+}
+
+.notepad-dlg-search .main .btn-cancel {
+  bottom: 56px;
+  position: absolute;
+  right: 8px;
+}
+
+.notepad-dlg-search .main .search-direction {
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+  height: 52px;
+  left: 172px;
+  padding: 10px 5px;
+  position: absolute;
+  top: 64px;
+  width: 136px;
+}
+
+.notepad-dlg-search .main input[value="down"] {
+  margin-left: 5px;
+}
+
+.notepad-dlg-search .main input[value="capital-sense"] {
+  margin-top: 30px;
 }
