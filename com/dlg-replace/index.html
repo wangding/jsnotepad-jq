@@ -2,12 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>查找替换对话框布局和测试页面</title>
+  <title>替换对话框布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/dlg-common.css">
   <link rel="stylesheet" href="dlg-replace.css">
+  <link rel="icon" href="https://i.wangding.in/favicon.ico" sizes="48x48" type="image/png">
 </head>
 <body>
-  
+<div class="test">
+  <input type="button" value="弹出对话框" autofocus>
+</div>
+<!--
+<div class="notepad-dlg-replace">
+  <div class="dialogbox notepad-dlgbox">
+    <div class="notepad-dlg-titlebar">
+      <p class="title">替换</p>
+      <span class="close-btn">✖</span>
+    </div>
+    <div class="main notepad-dlg-main">
+      <label>查找内容(N):<input class="txt-search" type="text" autofocus><br></label>
+      <label>替换为(P):<input class="txt-replace" type="text"><br></label>
+      <input type="checkbox" value="capital-sense">区分大小写(C)
+      <input class="btn-search btn" type="button" value="查找下一个(F)">
+      <input class="btn-replace btn" type="button" value="替换(R)">
+      <input class="btn-replace-all btn" type="button" value="全部替换(A)">
+      <input class="btn-cancel btn" type="button" value="取消">
+    </div>
+  </div>
+</div>
+-->
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="dlg-replace.js"></script>
+<script>
+$(function() {
+  var $btnTest = $('div.test>input[type="button"]');
+
+  $btnTest.click(function() {
+    $dlgReplace.show({
+      searchHandler: function(e) { console.log('search btn click.'); console.log(e); },
+      replaceHandler: function(e) { console.log('replace btn click.'); console.log(e); },
+      replaceAllHandler: function(e) { console.log('replace all btn click.'); console.log(e); }
+    });
+  });
+});
+</script>
 </body>
 </html>

@@ -1,3 +1,53 @@
-body {
-  background: green;
+.notepad-dlg-replace {
+  z-index: 10;
+}
+
+.notepad-dlg-replace .dialogbox {
+  height: 232px;
+  width: 404px;
+}
+
+.notepad-dlg-replace .main {
+  height: 200px;
+  padding: 6px;
+}
+
+.notepad-dlg-replace .main .txt-search {
+  box-sizing: border-box;
+  height: 26px;
+  margin: 10px;
+  width: 198px;
+}
+
+.notepad-dlg-replace .main .txt-replace {
+  box-sizing: border-box;
+  height: 26px;
+  margin-left: 25px;
+  width: 198px;
+}
+
+.notepad-dlg-replace .main .btn-search {
+  bottom: 156px;
+  position: absolute;
+  right: 12px;
+}
+
+.notepad-dlg-replace .main .btn-replace {
+  bottom: 118px;
+  position: absolute;
+  right: 12px;
+}
+.notepad-dlg-replace .main .btn-replace-all {
+  bottom: 82px;
+  position: absolute;
+  right: 12px;
+}
+.notepad-dlg-replace .main .btn-cancel {
+  bottom: 46px;
+  position: absolute;
+  right: 12px;
+}
+
+.notepad-dlg-replace .main input[value="capital-sense"] {
+  margin-top: 30px;
 }
