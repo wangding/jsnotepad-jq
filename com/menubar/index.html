@@ -3,11 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>菜单栏布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/dlg-common.css">
+  <link rel="stylesheet" href="../statusbar/statusbar.css">
+  <link rel="stylesheet" href="../dlg-about/dlg-about.css">
   <link rel="stylesheet" href="menubar.css">
 </head>
 <body>
-  
+<!--
+<div class="notepad-menubar">
+  <ul class="menu-title">
+    <li class="title">文件(F)</li>
+    <li class="title">编辑(E)</li>
+    <li class="title">格式(O)</li>
+    <li class="title">查看(V)</li>
+    <li class="title">帮助(H)</li>
+  </ul>
+  <ul class="menus">
+    <li class="menu-item">新建(N)<span class="shortcut">Ctrl+N</span></li>
+    <li class="menu-item">打开(O)...</li>
+    <li class="menu-item">保存(S)</li>
+    <li class="menu-item">另存为(A)...</li>
+    <li class="menu-hr"></li>
+    <li class="menu-item">页面设置(U)</li>
+    <li class="disabled menu-item">打印(P)</li>
+    <li class="menu-hr"></li>
+    <li class="menu-item">退出(X)</li>
+  </ul>
+</div>
+-->
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="../../js/app.js"></script>
+<script src="../../js/menu-data.js"></script>
+<script src="../statusbar/statusbar.js"></script>
+<script src="../dlg-about/dlg-about.js"></script>
 <script src="menubar.js"></script>
+<script>
+$(function() {
+  $menubar.show(np.menuData);
+  $statusBar.init();
+  $statusBar.display(false);
+  $menubar.enabled(4, 0, false);
+  $menubar.enabled(1, 0, true);
+});
+</script>
 </body>
 </html>
