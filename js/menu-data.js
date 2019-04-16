@@ -1,4 +1,4 @@
-/* global np, $dlgAbout, $menubar, $statusBar: true */
+/* global np, $dlgAbout, $menubar, $statusBar, $editor: true */
 /* eslint no-console: ["error", { allow: ["log"]  }] */
 np.menuData = [
   { 
@@ -189,6 +189,7 @@ np.menuData = [
           np.bShowStatusBar = !np.bShowStatusBar;
           $statusBar.display(np.bShowStatusBar);
           $menubar.checked(3, 0, np.bShowStatusBar);
+          $editor.resize(np.bShowStatusBar);
         }
       }
     ],

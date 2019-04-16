@@ -1,3 +1,19 @@
-body {
-  background: green;
+.notepad-editor {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 20px;
+}
+
+.notepad-editor textarea {
+  auto-size: none;
+  border-top: 1px solid #d2d2d2;
+  box-sizing: border-box;
+  height: 100%;
+  outline: none;
+  overflow: scroll;
+  padding: 0 1px;
+  resize: none;
+  width: 100%;
 }

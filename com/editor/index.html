@@ -2,12 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>主编辑区组件布局和测试页面</title>
-  <link rel="stylesheet" href="editor.css">
+  <title>编辑器布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/dlg-common.css">
+  <link rel="stylesheet" href="../statusbar/statusbar.css">
+  <link rel="stylesheet" href="../dlg-about/dlg-about.css">
+  <link rel="stylesheet" href="../menubar/menubar.css">
+  <link rel="stylesheet" href="./editor.css">
 </head>
 <body>
-  
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="editor.js"></script>
+<script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="../../js/app.js"></script>
+<script src="../../js/menu-data.js"></script>
+<script src="../statusbar/statusbar.js"></script>
+<script src="../dlg-about/dlg-about.js"></script>
+<script src="../menubar/menubar.js"></script>
+<script src="./editor.js"></script>
+<script>
+$(function() {
+  $menubar.show(np.menuData);
+  $statusBar.init();
+  $statusBar.display(false);
+  $menubar.enabled(4, 0, false);
+  $menubar.enabled(1, 0, true);
+  $editor.show();
+});
+</script>
 </body>
 </html>
