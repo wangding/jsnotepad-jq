@@ -1,3 +1,33 @@
-body {
-  background: green;
+.notepad-dlg-goto {
+  z-index: 10;
+}
+
+.notepad-dlg-goto .dialogbox {
+  height: 160px;
+  width: 294px;
+}
+
+.notepad-dlg-goto .main {
+  height: 127px;
+}
+
+.notepad-dlg-goto .main .txt-line-num {
+  box-sizing: border-box;
+  height: 30px;
+  margin: 10px 0;
+  width: 266px;
+}
+
+.notepad-dlg-goto .main .btn-goto,
+.notepad-dlg-goto .main .btn-cancel {
+  bottom: 16px;
+  position: absolute;
+}
+
+.notepad-dlg-goto .main .btn-goto {
+  right: 108px;
+}
+
+.notepad-dlg-goto .main .btn-cancel {
+  right: 14px;
 }
