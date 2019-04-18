@@ -1,3 +1,30 @@
-body {
-  background: green;
+.notepad-statusbar {
+  background: #f0f0f0;
+  border-top: 1px solid #d7d7d7;
+  bottom: 0;
+  box-sizing: border-box;
+  height: 22px;
+  left: 0;
+  position: fixed;
+  right: 0;
+}
+
+.notepad-statusbar .right-panel {
+  border-left: 1px solid #d7d7d7;
+  bottom: 1px;
+  height: 19px;
+  min-width: 170px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 25%;
+}
+
+.notepad-statusbar .right-panel .row-col {
+  cursor: default;
+  font-size: 1em;
+  line-height: 19px;
+  margin: 0 auto;
+  text-align: center;
+  user-select: none;
 }
