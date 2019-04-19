@@ -31,3 +31,28 @@
 .notepad-dlg-goto .main .btn-cancel {
   right: 14px;
 }
+
+.notepad-dlg-goto .err-msg {
+  background-color: white;
+  border: 1px solid red;
+  border-radius: 10px;
+  color: red;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 170px;
+}
+
+.notepad-dlg-goto .err-msg:after {
+  border-color: red transparent;
+  border-style: solid;
+  border-width: 0 15px 20px 0;
+  content: "";
+  display: block;
+  height: 0;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  width: 0;
+}

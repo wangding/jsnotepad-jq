@@ -22,6 +22,8 @@ var $dlgGoto = (function() {
       $txtLineNum = $dlg.find('.txt-line-num'),
       $titleBar = $dlg.find('.notepad-dlg-titlebar');
 
+  var $errMsg = $('<div class="err-msg"></div>');
+
   var cfg = {
     lineNum: 1,
     totalLine: 1,
@@ -40,25 +42,41 @@ var $dlgGoto = (function() {
   function filterKey(e) {
     if(!/[0-9]/.test(e.key)) {
       e.preventDefault();
-      showErrMsg();
+      showErrMsg('你只能在此输入数字!');
     }
   }
 
-  function showErrMsg() {
-    alert('你只能在此输入数字！');   // TODO: 需要改成气泡框提示错误信息
+  function showErrMsg(msg) {
+    $errMsg.html(msg);
+
+    $($btnGoto.parent()).append($errMsg);
+    setTimeout(function() {
+      $errMsg.remove();
+      $txtLineNum.select();
+    }, 3000);
   }
 
   function validate() {
     if($txtLineNum.val() === '') {
-      alert('请输入要转到的行号！');
+      showErrMsg('行号不能为空！');
       return false;
     }
 
     var n = Number($txtLineNum.val());
 
-    if(n === 0 || n > cfg.totalLine) {
-      alert('行数超过了总行数！');    // TODO：需要改成自己的对话框
+    if(isNaN(n)) {
+      showErrMsg('行号不是数字！');
+      return false;
+    }
+
+    if(n === 0) {
+      showErrMsg('行号不能小于 1！');
       $txtLineNum.select();
+      return false;
+    }
+
+    if(n > cfg.totalLine) {
+      showErrMsg('行号超过了总行数！');
       return false;
     }
 
