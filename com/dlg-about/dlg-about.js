@@ -25,9 +25,13 @@ var $dlgAbout = (function() {
       $btnClose = $dlg.find('.close-btn'),
       $titleBar = $dlg.find('.notepad-dlg-titlebar');
 
-  function destory() { $dlg.remove(); }
+  var closeHandler = null;
 
-  function show() {
+  function destory() { $dlg.remove(); closeHandler(); }
+
+  function show(handler) {
+    closeHandler = handler;
+
     $('body').append($dlg);
     $dlg.find('.dialogbox').draggable({handle: $titleBar});
     $btnOk.focus();
