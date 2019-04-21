@@ -161,7 +161,7 @@ np.menuData = [
         enabled: true,
         handler: function() {
           $dlgGoto.show({
-            lineNum: $editor.getCurLn(),
+            lineNum: $editor.getRow(),
             totalLine: $editor.getTotalLn(),
             gotoHandler: function(lines) {
               $editor.goto(lines);
@@ -198,7 +198,23 @@ np.menuData = [
         title: '自动换行(W)',
         shortcut: '',
         enabled: true,
-        handler: function() { console.log('自动换行(W) menu clicked!'); }
+        handler: function() {
+          np.bWrap = !np.bWrap;
+
+          if(np.bWrap) {
+            $statusBar.display(false);
+            $editor.resize(false);
+            $menubar.enabled(3, 0, false);
+          } else {
+            $statusBar.display(np.bShowStatusBar);
+            $editor.resize(np.bShowStatusBar);
+            $menubar.enabled(3, 0, true);
+            $menubar.checked(3, 0, np.bShowStatusBar);
+          }
+
+          $menubar.checked(2, 0, np.bWrap);
+          $editor.setWrap(np.bWrap);
+        }
       },
       {
         title: '字体(F)...',

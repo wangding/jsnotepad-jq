@@ -10,12 +10,16 @@ np.config = {
 };
 
 np.bShowStatusBar = false;   // 是否显示状态栏
-np.bLineWrap = false;        // 是否换行
+np.bWrap = false;            // 是否换行
 
 /* global $menubar $editor $statusBar: true */
 $(function() {
   $menubar.show(np.menuData);
-  $editor.show();
+  $editor.show({
+    keyupHandler: function(row, col) {
+      $statusBar.setRowCol(row, col);
+    }
+  });
   $statusBar.init();
   $statusBar.display(false);
 
