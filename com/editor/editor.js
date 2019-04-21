@@ -2,7 +2,7 @@
 var $editor = (function() {
   var $DOM = $(''
       + '<div class="notepad-editor">'
-        + '<textarea spellcheck="false"></textarea>'
+        + '<textarea spellcheck="false" auto-size="none"></textarea>'
       + '</div>');
 
   var $textArea = $DOM.find('textarea');

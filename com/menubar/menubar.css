@@ -74,7 +74,7 @@
 .notepad-menubar .menu-hr {
   border: 1px solid #d7d7d7;
   display: block;
-  height: 0px;
+  height: 0;
   margin: 4px;
   margin-left: 34px;
 }

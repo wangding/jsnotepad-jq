@@ -1,4 +1,12 @@
-/* global np, $dlgAbout, $menubar, $statusBar, $editor: true */
+/* global np,
+          $dlgAbout,
+          $menubar,
+          $statusBar,
+          $editor,
+          $dlgFont,
+          $dlgSearch,
+          $dlgReplace,
+          $dlgGoto: true */
 /* eslint no-console: ["error", { allow: ["log"]  }] */
 np.menuData = [
   { 
@@ -117,7 +125,11 @@ np.menuData = [
         title: '查找(F)...',
         shortcut: 'Ctrl+F',
         enabled: false,
-        handler: function() { console.log('查找(F) menu clicked!'); }
+        handler: function() {
+          $dlgSearch.show(function(content) {
+            $editor.search(content);
+          });
+        }
       },
       {
         title: '查找下一个(N)',
@@ -129,13 +141,33 @@ np.menuData = [
         title: '替换(R)...',
         shortcut: 'Ctrl+H',
         enabled: true,
-        handler: function() { console.log('替换(R) menu clicked!'); }
+        handler: function() {
+          $dlgReplace.show({
+            searchHandler: function(e) {
+              $editor.search(e);
+            },
+            replaceHandler: function(e) {
+              $editor.replace(e);
+            },
+            replaceAllHandler: function(e) {
+              $editor.replaceAll(e);
+            }
+          });
+        }
       },
       {
         title: '转到(G)...',
         shortcut: 'Ctrl+G',
         enabled: true,
-        handler: function() { console.log('转到(G) menu clicked!'); }
+        handler: function() {
+          $dlgGoto.show({
+            lineNum: $editor.getCurLn(),
+            totalLine: $editor.getTotalLn(),
+            gotoHandler: function(lines) {
+              $editor.goto(lines);
+            }
+          });
+        }
       },
       {
         title: 'hr',
@@ -172,7 +204,9 @@ np.menuData = [
         title: '字体(F)...',
         shortcut: '',
         enabled: true,
-        handler: function() { console.log('字体(F) menu clicked!'); }
+        handler: function() {
+          $dlgFont.show();
+        }
       }
     ],
     width: '156px',
@@ -203,7 +237,9 @@ np.menuData = [
         title: '查看帮助(H)',
         shortcut: '',
         enabled: true,
-        handler: function() { console.log('查看帮助(H) menu clicked!'); }
+        handler: function() {
+          window.open('https://cn.bing.com/search?q=获取有关+windows+10+中的记事本的帮助', '_blank');
+        }
       },
       {
         title: '关于记事本(A)',

@@ -12,12 +12,10 @@ np.config = {
 np.bShowStatusBar = false;   // 是否显示状态栏
 np.bLineWrap = false;        // 是否换行
 
-/* global $menubar $editor $statusbar: true */
-/*
+/* global $menubar $editor $statusBar: true */
 $(function() {
-  $menubar.show();
+  $menubar.show(np.menuData);
   $editor.show();
-  //$statusbar.init({'row': 1, 'col': 1});
-  $statusbar.show();
+  $statusBar.init();
+  $statusBar.display(false);
 });
-*/

@@ -1,5 +1,6 @@
 /* exported $dlgFont */
 /* global comList: true */
+/* eslint no-console: ["error", { allow: ["log"]   }] */
 var $dlgFont = (function() {
   var $dlg = $(''
       + '<div class="notepad-dlg-mask notepad-dlg-font">'
