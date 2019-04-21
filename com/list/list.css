@@ -1,0 +1,33 @@
+.notepad-com-list {
+  user-select: none;
+  width: 200px;
+}
+
+.notepad-com-list .editor {
+  border: 1px solid #0078d7;
+  box-sizing: border-box;
+  font-size: 1em;
+  height: 20px;
+  padding-left: 2px;
+  width: 100%;
+}
+
+.notepad-com-list .list {
+  background-color: white;
+  border: 1px solid #828790;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 116px;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.notepad-com-list .list .item {
+  line-height: 16px;
+  padding-left: 2px;
+}
+
+.notepad-com-list .list .selected {
+  background-color: #0078d7;
+  color: white;
+}

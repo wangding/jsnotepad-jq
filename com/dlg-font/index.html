@@ -3,11 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <title>字体对话框布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/dlg-common.css">
+  <link rel="stylesheet" href="../list/list.css">
   <link rel="stylesheet" href="dlg-font.css">
+  <link rel="icon" href="https://i.wangding.in/favicon.ico" sizes="48x48" type="image/png">
 </head>
 <body>
-  
+<div class="test">
+  <input type="button" value="弹出对话框">
+</div>
+<!--
+<div class="notepad-dlg-mask notepad-dlg-font">
+  <div class="dialogbox notepad-dlgbox">
+    <div class="notepad-dlg-titlebar">
+      <p class="title">字体</p>
+      <span class="close-btn">✖</span>
+    </div>
+    <div class="main notepad-dlg-main">
+      <div class="font-family"><p>字体(F):</p></div>
+      <div class="font-style"><p>字形(Y):</p></div>
+      <div class="font-size"><p>大小(S):</p></div>
+      <fieldset class="sample">
+        <legend>示例</legend>
+        <p>AaBbYyZz</p>
+      </fieldset>
+      <div class="script">
+        <label>
+          脚本(R):<br>
+          <select>
+            <option value="西欧语言">西欧语言</option>
+            <option value="中文 GB2312">中文 GB2312</option>
+          </select>
+        </label>
+      </div>
+      <input class="btn-ok btn" type="button" value="确定">
+      <input class="btn-cancel btn" type="button" value="取消">
+    </div>
+  </div>
+</div>
+-->
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="../list/list.js"></script>
 <script src="dlg-font.js"></script>
+<script>
+$(function() {
+    $btnTest = $('div.test>input[type="button"]');
+
+    $btnTest.click(function() {
+      $dlgFont.show();
+    });
+});
+</script>
 </body>
 </html>

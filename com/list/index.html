@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>列表组件布局和测试页面</title>
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/dlg-common.css">
+  <link rel="stylesheet" href="list.css">
+  <link rel="icon" href="https://i.wangding.in/favicon.ico" sizes="48x48" type="image/png">
+  <style>
+  .list1,
+  .list2,
+  .list3 {
+    display: inline-block;
+    margin: 10px 5px;
+  }
+  </style>
+</head>
+<body>
+<!--
+<div class="notepad-com-list">
+  <input class="editor" type="text"><br>
+  <ul class="list">
+    <li class="item">11</li>
+    <li class="item">22</li>
+    <li class="item">33</li>
+    <li class="item">44</li>
+    <li class="item">55</li>
+  </ul>
+</div>
+-->
+<div class="list1"></div>
+<div class="list2"></div>
+<div class="list3"></div>
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="list.js"></script>
+<script>
+$(function() {
+  var fonts = ['Agency FB', 'Algerian', 'Arial', 'Arial Rounded MT', 'Axure Handwriting', 'Bahnschrift', 'Baskerville Old Face', 'Bauhaus 93', 'Bell MT', 'Berlin Sans FB', 'Bernard MT', 'BlackAdder ITC'],
+      styles = ['常规', '斜体', '粗体', '粗偏斜体'],
+      sizes = ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '26', '28', '36', '48', '72'];
+
+  var l1 = new comList();
+  l1.show({
+    container: '.list1',
+    width: '176px',
+    list: fonts,
+    isFont: true,
+    selectHandler: function(e) { console.log(fonts[e]); }
+  });
+
+  var l2 = new comList();
+  l2.show({
+    container: '.list2',
+    select: 3,
+    width: '132px',
+    list: styles,
+    isFontStyle: true,
+    selectHandler: function(e) { console.log(styles[e]); }
+  });
+
+  var l3 = new comList();
+  l3.show({
+    container: '.list3',
+    width: '64px',
+    list: sizes,
+    selectHandler: function(e) { console.log(sizes[e]); }
+  });
+});
+</script>
+</body>
+</html>
