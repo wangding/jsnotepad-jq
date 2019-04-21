@@ -15,10 +15,18 @@ var $editor = (function() {
     }
   }
 
+  function focus() {
+    $textArea.focus();
+  }
+
   function show() {
     $('body').append($DOM);
     $textArea.trigger('focus');
   }
 
-  return {show: show, resize: resize};
+  return {
+    show: show,
+    resize: resize,
+    focus: focus
+  };
 }());

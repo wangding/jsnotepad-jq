@@ -18,4 +18,11 @@ $(function() {
   $editor.show();
   $statusBar.init();
   $statusBar.display(false);
+
+  var $app = $('body');
+
+  $app.click(function() {
+    $menubar.hideMenu();
+    $editor.focus();
+  });
 });

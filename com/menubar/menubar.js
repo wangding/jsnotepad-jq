@@ -21,7 +21,7 @@ var $menubar = (function() {
       $title.attr('data-id', i);
       $titles.append($title);
 
-      $title.click(function() {
+      $title.click(function(e) {
         var i = Number(this.dataset.id);
 
         if(active === -1) {
@@ -35,6 +35,8 @@ var $menubar = (function() {
           menus[active].css({ display: 'none' });
           active = -1;
         }
+
+        e.stopPropagation();
       });
 
       $title.hover(function() {
@@ -136,6 +138,13 @@ var $menubar = (function() {
     }
   }
 
+  function hideMenu() {
+    if(active === -1) return;
+
+    menus[active].css({display: 'none'});
+    active = -1;
+  }
+
   function init() {
     createMenuTitle();
     createMenus();
@@ -151,6 +160,7 @@ var $menubar = (function() {
   return {
     show: show,
     checked: checked,
-    enabled: enabled
+    enabled: enabled,
+    hideMenu: hideMenu
   };
 }());
