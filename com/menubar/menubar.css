@@ -18,7 +18,7 @@
   box-sizing: border-box;
   cursor: default;
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 1em;
   height: 20px;
   line-height: 18px;
   text-align: center;
@@ -35,7 +35,7 @@
   background-color: #f2f2f2;
   box-shadow: 5px 5px 5px #a6a6a6;
   display: inline-block;
-  font-size: 0.8em;
+  font-size: 1em;
   margin: 0;
   padding: 2px;
   position: absolute;

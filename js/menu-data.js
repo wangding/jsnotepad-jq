@@ -221,7 +221,12 @@ np.menuData = [
         shortcut: '',
         enabled: true,
         handler: function() {
-          $dlgFont.show();
+          $dlgFont.show({
+            family: np.fontFamily,
+            style: np.fontStyle,
+            size: np.fontSize,
+            okHandler: np.fontHandler
+          });
         }
       }
     ],

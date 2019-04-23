@@ -52,7 +52,11 @@ $(function() {
     $btnTest = $('div.test>input[type="button"]');
 
     $btnTest.click(function() {
-      $dlgFont.show();
+      $dlgFont.show({
+        okHandler: function(e) {
+          console.log(e);
+        }
+      });
     });
 });
 </script>
