@@ -45,18 +45,18 @@ module.exports = function (grunt) {
     concat: {
       js: {
         src: ['js/*.js', './com/**/*.js'],
-        dest: 'dist/js/bundle.js'
+        dest: 'dist/bundle.js'
       },
       css: {
         src: ['css/*.css', './com/**/*.css'],
-        dest: 'dist/css/bundle.css'
+        dest: 'dist/bundle.css'
       }
     },
     uglify: {
-      'dist/js/bundle.min.js': 'dist/js/bundle.js'
+      'dist/bundle.min.js': 'dist/bundle.js'
     },
     cssmin: {
-      'dist/css/bundle.min.css': 'dist/css/bundle.css'
+      'dist/bundle.min.css': 'dist/bundle.css'
     },
     useminPrepare: {
       html: 'index.html',
@@ -68,7 +68,7 @@ module.exports = function (grunt) {
       html: ['dist/index.html']
     },
     clean: {
-      end: ['dist/css/bundle.css', 'dist/js/bundle.js', '.tmp']
+      end: ['dist/bundle.css', 'dist/bundle.js', '.tmp']
     }
   });
 
