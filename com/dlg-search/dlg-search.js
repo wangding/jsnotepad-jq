@@ -5,7 +5,7 @@ var $dlgSearch = (function() {
         + '<div class="dialogbox notepad-dlgbox">'
           + '<div class="notepad-dlg-titlebar">'
             + '<p class="title">查找</p>'
-            + '<span class="close-btn">✖</span>'
+            + '<span class="close-btn" title="关闭">✖</span>'
           + '</div>'
           + '<div class="main notepad-dlg-main">'
             + '<label>查找内容(N): <input class="txt-content" type="text" autofocus></label><br>'
@@ -60,6 +60,11 @@ var $dlgSearch = (function() {
         capitalSense: $dlg.find('input[type="checkbox"]:checked').val() === 'capital-sense',
         direction: $dlg.find('input[name="direction"]:checked').val()
       });
+    });
+
+    $dlg.click(function(e) {
+      $txtContent.focus();
+      e.stopPropagation();
     });
   }
 

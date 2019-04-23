@@ -5,7 +5,7 @@ var $dlgGoto = (function() {
           + '<div class="dialogbox notepad-dlgbox">'
             + '<div class="notepad-dlg-titlebar">'
               + '<p class="title">转到指定行</p>'
-              + '<span class="close-btn">✖</span>'
+              + '<span class="close-btn" title="关闭">✖</span>'
             + '</div>'
             + '<div class="main notepad-dlg-main">'
               + '<label for="">行号(L):</label><br>'
@@ -86,6 +86,9 @@ var $dlgGoto = (function() {
   function show(conf) {
     $.extend(cfg, conf);
 
+    $txtLineNum.focus();
+    $txtLineNum.select();
+
     $('body').append($dlg);
     $dlg.find('.dialogbox').draggable({handle: $titleBar});
 
@@ -93,6 +96,12 @@ var $dlgGoto = (function() {
     $btnCancel.click(destoryDlg);
     $btnGoto.click(gotoHandler);
     $txtLineNum.keypress(filterKey);
+
+    $dlg.click(function(e) {
+      $txtLineNum.focus();
+      $txtLineNum.select();
+      e.stopPropagation();
+    });
 
     $txtLineNum.val(cfg.lineNum);
     $txtLineNum.select();

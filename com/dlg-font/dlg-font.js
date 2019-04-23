@@ -7,7 +7,7 @@ var $dlgFont = (function() {
         + '<div class="dialogbox notepad-dlgbox">'
           + '<div class="notepad-dlg-titlebar">'
             + '<p class="title">字体</p>'
-            + '<span class="close-btn">✖</span>'
+            + '<span class="close-btn" title="关闭">✖</span>'
           + '</div>'
           + '<div class="main notepad-dlg-main">'
             + '<div class="font-family"><p>字体(F):</p></div>'
@@ -71,6 +71,7 @@ var $dlgFont = (function() {
   }
 
   function destory() { $dlg.remove(); }
+
   function show() {
     $('body').append($dlg);
     init();
@@ -79,6 +80,10 @@ var $dlgFont = (function() {
     $btnClose.click(destory);
     $btnCancel.click(destory);
     $btnOk.click(destory);
+
+    $dlg.click(function(e) {
+      e.stopPropagation();
+    });
   }
 
   return {show: show};

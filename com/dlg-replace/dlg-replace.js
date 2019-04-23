@@ -5,7 +5,7 @@ var $dlgReplace = (function() {
         + '<div class="dialogbox notepad-dlgbox">'
           + '<div class="notepad-dlg-titlebar">'
             + '<p class="title">替换</p>'
-            + '<span class="close-btn">✖</span>'
+            + '<span class="close-btn" title="关闭">✖</span>'
           + '</div>'
           + '<div class="main notepad-dlg-main">'
             + '<label>查找内容(N):<input class="txt-search" type="text" autofocus><br></label>'
@@ -92,6 +92,11 @@ var $dlgReplace = (function() {
     $btnSearch.click(searchHandler);
     $btnReplace.click(replaceHandler);
     $btnReplaceAll.click(replaceAllHandler);
+
+    $dlg.click(function(e) {
+      $txtSearch.focus();
+      e.stopPropagation();
+    });
   }
 
   return {show: show};

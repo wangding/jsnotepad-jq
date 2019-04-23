@@ -5,7 +5,7 @@ var $dlgAbout = (function() {
           + '<div class="dialogbox notepad-dlgbox">'
             + '<div class="notepad-dlg-titlebar">'
               + '<p class="title">关于“记事本”</p>'
-              + '<span class="close-btn">✖</span>'
+              + '<span class="close-btn" title="关闭">✖</span>'
             + '</div>'
             + '<div class="main notepad-dlg-main">'
               + '<h1 class="slogan">JSNotepad</h1>'
@@ -25,19 +25,20 @@ var $dlgAbout = (function() {
       $btnClose = $dlg.find('.close-btn'),
       $titleBar = $dlg.find('.notepad-dlg-titlebar');
 
-  var closeHandler = null;
+  function destory() { $dlg.remove(); }
 
-  function destory() { $dlg.remove(); closeHandler(); }
-
-  function show(handler) {
-    closeHandler = handler;
-
+  function show() {
     $('body').append($dlg);
     $dlg.find('.dialogbox').draggable({handle: $titleBar});
     $btnOk.focus();
 
     $btnOk.click(destory);
     $btnClose.click(destory);
+
+    $dlg.click(function(e) {
+      $btnOk.focus();
+      e.stopPropagation();
+    });
   }
 
   return {show: show};

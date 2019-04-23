@@ -82,7 +82,7 @@ var $menubar = (function() {
 
         $menus.append($menu);
 
-        $menu.click(function() {
+        $menu.click(function(e) {
           if($(this).hasClass('disabled')) return;
 
           var i = this.dataset.x, j = this.dataset.y;
@@ -90,6 +90,8 @@ var $menubar = (function() {
           menuData[i].menuItems[j].handler();
           menus[i].css({display: 'none'});
           active = -1;
+
+          e.stopPropagation();
         });
       }
 

@@ -261,7 +261,7 @@ np.menuData = [
         title: '关于记事本(A)',
         shortcut: '',
         enabled: true,
-        handler: function() { $dlgAbout.show($editor.focus); }
+        handler: function() { $dlgAbout.show(); }
       },
     ],
     width: '166px',
