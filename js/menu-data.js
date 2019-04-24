@@ -163,8 +163,8 @@ np.menuData = [
           $dlgGoto.show({
             lineNum: $editor.getRow(),
             totalLine: $editor.getTotalLn(),
-            gotoHandler: function(lines) {
-              $editor.goto(lines);
+            gotoHandler: function(lineNum) {
+              $editor.gotoLn(lineNum);
             }
           });
         }
@@ -204,11 +204,13 @@ np.menuData = [
           if(np.bWrap) {
             $statusBar.display(false);
             $editor.resize(false);
-            $menubar.enabled(3, 0, false);
+            $menubar.enabled(3, 0, false);    // [查看]-[状态栏]菜单禁用
+            $menubar.enabled(1, 9, false);   // [编辑]-[转到]菜单禁用
           } else {
             $statusBar.display(np.bShowStatusBar);
             $editor.resize(np.bShowStatusBar);
-            $menubar.enabled(3, 0, true);
+            $menubar.enabled(3, 0, true);     // [查看]-[状态栏]菜单启用
+            $menubar.enabled(1, 9, true);     // [编辑]-[转到]菜单启用
             $menubar.checked(3, 0, np.bShowStatusBar);
           }
 

@@ -113,6 +113,20 @@ var $editor = (function() {
     cfg.keyupHandler(getRow(), getCol());
   }
 
+  function gotoLn(num) {
+    var str = $textArea.val(),
+        m = 0;
+
+    var aryStr = str.split('\n');
+    for(var i=0; i<num-1; i++) {
+      m += aryStr[i].length + 1;
+    }
+
+    $textArea[0].selectionStart = m;
+    $textArea[0].selectionEnd = m;
+    $textArea.focus();
+  }
+
   function show(conf) {
     $.extend(cfg, conf);
 
@@ -131,6 +145,7 @@ var $editor = (function() {
     setWrap: setWrap,
     selectAll: selectAll,
     insertDataTime: insertDataTime,
+    gotoLn: gotoLn,
     setFont: setFont
   };
 }());
