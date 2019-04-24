@@ -185,7 +185,7 @@ np.menuData = [
         title: '时间/日期(D)',
         shortcut: 'F5',
         enabled: true,
-        handler: function() { console.log('时间/日期(D) menu clicked!'); }
+        handler: function() { $editor.insertDataTime(); }
       },
     ],
     width: '218px',

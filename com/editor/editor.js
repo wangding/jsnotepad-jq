@@ -100,6 +100,19 @@ var $editor = (function() {
     $textArea.select();
   }
 
+  function insertDataTime() {
+    var str = $textArea.val();
+
+    var strLeft = str.substring(0, $textArea[0].selectionStart),
+        strRight = str.substring($textArea[0].selectionEnd, str.length);
+
+    str = strLeft + new Date().toLocaleString() + strRight;
+
+    $textArea.val(str);
+    $textArea.focus();
+    cfg.keyupHandler(getRow(), getCol());
+  }
+
   function show(conf) {
     $.extend(cfg, conf);
 
@@ -117,6 +130,7 @@ var $editor = (function() {
     getCol: getCol,
     setWrap: setWrap,
     selectAll: selectAll,
+    insertDataTime: insertDataTime,
     setFont: setFont
   };
 }());
