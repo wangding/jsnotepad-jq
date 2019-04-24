@@ -125,6 +125,7 @@ var $editor = (function() {
     $textArea[0].selectionStart = m;
     $textArea[0].selectionEnd = m;
     $textArea.focus();
+    cfg.keyupHandler(getRow(), getCol());
   }
 
   function bingSearch() {
