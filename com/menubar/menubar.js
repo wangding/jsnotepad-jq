@@ -83,15 +83,16 @@ var $menubar = (function() {
         $menus.append($menu);
 
         $menu.click(function(e) {
+          e.stopPropagation();
+
           if($(this).hasClass('disabled')) return;
 
           var i = this.dataset.x, j = this.dataset.y;
 
-          menuData[i].menuItems[j].handler();
           menus[i].css({display: 'none'});
           active = -1;
 
-          e.stopPropagation();
+          menuData[i].menuItems[j].handler();
         });
       }
 

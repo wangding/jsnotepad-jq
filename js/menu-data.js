@@ -179,7 +179,7 @@ np.menuData = [
         title: '全选(A)',
         shortcut: 'Ctrl+A',
         enabled: true,
-        handler: function() { console.log('全选(A) menu clicked!'); }
+        handler: function() { $editor.selectAll(); }
       },
       {
         title: '时间/日期(D)',

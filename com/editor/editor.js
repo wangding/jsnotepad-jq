@@ -91,6 +91,15 @@ var $editor = (function() {
     }
   }
 
+  function selectAll() {
+    var n = $textArea.val().length;
+
+    $textArea[0].selectionStart = 0;
+    $textArea[0].selectionEnd = n;
+
+    $textArea.select();
+  }
+
   function show(conf) {
     $.extend(cfg, conf);
 
@@ -107,6 +116,7 @@ var $editor = (function() {
     getRow: getRow,
     getCol: getCol,
     setWrap: setWrap,
+    selectAll: selectAll,
     setFont: setFont
   };
 }());
