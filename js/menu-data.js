@@ -119,7 +119,7 @@ np.menuData = [
         title: '使用 Bing 搜索...',
         shortcut: 'Ctrl+E',
         enabled: true,
-        handler: function() { console.log('使用 Bing 搜索 menu clicked!'); }
+        handler: function() { $editor.bingSearch(); }
       },
       {
         title: '查找(F)...',

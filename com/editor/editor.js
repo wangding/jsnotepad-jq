@@ -127,6 +127,18 @@ var $editor = (function() {
     $textArea.focus();
   }
 
+  function bingSearch() {
+    var start = $textArea[0].selectionStart,
+        end   = $textArea[0].selectionEnd;
+
+    if(start === end) {
+      window.open('https://cn.bing.com/', '_blank');
+    } else {
+      var subStr = $textArea.val().substring(start, end);
+      window.open('https://cn.bing.com/search?q=' + subStr, '_blank');
+    }
+  }
+
   function show(conf) {
     $.extend(cfg, conf);
 
@@ -146,6 +158,7 @@ var $editor = (function() {
     selectAll: selectAll,
     insertDataTime: insertDataTime,
     gotoLn: gotoLn,
+    bingSearch: bingSearch,
     setFont: setFont
   };
 }());
