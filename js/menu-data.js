@@ -126,8 +126,8 @@ np.menuData = [
         shortcut: 'Ctrl+F',
         enabled: false,
         handler: function() {
-          $dlgSearch.show(function(content) {
-            $editor.search(content);
+          $dlgSearch.show(function(srch) {
+            $editor.search(srch);
           });
         }
       },
@@ -204,7 +204,7 @@ np.menuData = [
           if(np.bWrap) {
             $statusBar.display(false);
             $editor.resize(false);
-            $menubar.enabled(3, 0, false);    // [查看]-[状态栏]菜单禁用
+            $menubar.enabled(3, 0, false);   // [查看]-[状态栏]菜单禁用
             $menubar.enabled(1, 9, false);   // [编辑]-[转到]菜单禁用
           } else {
             $statusBar.display(np.bShowStatusBar);

@@ -62,8 +62,7 @@ var $dlgSearch = (function() {
       });
     });
 
-    $dlg.click(function(e) {
-      $txtContent.focus();
+    $txtContent.click(function(e) {
       e.stopPropagation();
     });
   }
