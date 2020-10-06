@@ -1,6 +1,6 @@
 /* exported $dlgGoto */
-var $dlgGoto = (function() {
-  var $dlg = $(''
+let $dlgGoto = (() => {
+  let $dlg = $(''
         + '<div class="notepad-dlg-mask notepad-dlg-goto">'
           + '<div class="dialogbox notepad-dlgbox">'
             + '<div class="notepad-dlg-titlebar">'
@@ -16,15 +16,15 @@ var $dlgGoto = (function() {
           + '</div>'
         + '</div>');
 
-  var $btnClose = $dlg.find('.close-btn'),
-      $btnCancel = $dlg.find('.btn-cancel'),
-      $btnGoto = $dlg.find('.btn-goto'),
+  let $btnClose   = $dlg.find('.close-btn'),
+      $btnCancel  = $dlg.find('.btn-cancel'),
+      $btnGoto    = $dlg.find('.btn-goto'),
       $txtLineNum = $dlg.find('.txt-line-num'),
-      $titleBar = $dlg.find('.notepad-dlg-titlebar');
+      $titleBar   = $dlg.find('.notepad-dlg-titlebar');
 
-  var $errMsg = $('<div class="err-msg"></div>');
+  let $errMsg = $('<div class="err-msg"></div>');
 
-  var cfg = {
+  let cfg = {
     lineNum: 1,
     totalLine: 1,
     gotoHandler: null
@@ -50,7 +50,7 @@ var $dlgGoto = (function() {
     $errMsg.html(msg);
 
     $($btnGoto.parent()).append($errMsg);
-    setTimeout(function() {
+    setTimeout(() => {
       $errMsg.remove();
       $txtLineNum.select();
     }, 3000);
@@ -62,7 +62,7 @@ var $dlgGoto = (function() {
       return false;
     }
 
-    var n = Number($txtLineNum.val());
+    let n = Number($txtLineNum.val());
 
     if(isNaN(n)) {
       showErrMsg('行号不是数字！');
@@ -97,7 +97,7 @@ var $dlgGoto = (function() {
     $btnGoto.click(gotoHandler);
     $txtLineNum.keypress(filterKey);
 
-    $dlg.click(function(e) {
+    $dlg.click((e) => {
       $txtLineNum.focus();
       $txtLineNum.select();
       e.stopPropagation();
@@ -107,5 +107,5 @@ var $dlgGoto = (function() {
     $txtLineNum.select();
   }
 
-  return {show: show};
+  return { show };
 })();

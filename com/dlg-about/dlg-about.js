@@ -1,6 +1,6 @@
 /* exported $dlgAbout */
-var $dlgAbout = (function() {
-  var $dlg = $(''
+let $dlgAbout = (() => {
+  let $dlg = $(''
         + '<div class="notepad-dlg-mask notepad-dlg-about">'
           + '<div class="dialogbox notepad-dlgbox">'
             + '<div class="notepad-dlg-titlebar">'
@@ -21,7 +21,7 @@ var $dlgAbout = (function() {
           + '</div>'
         + '</div>');
 
-  var $btnOk = $dlg.find('.btn-ok'),
+  let $btnOk    = $dlg.find('.btn-ok'),
       $btnClose = $dlg.find('.close-btn'),
       $titleBar = $dlg.find('.notepad-dlg-titlebar');
 
@@ -35,11 +35,11 @@ var $dlgAbout = (function() {
     $btnOk.click(destory);
     $btnClose.click(destory);
 
-    $dlg.click(function(e) {
+    $dlg.click((e) => {
       $btnOk.focus();
       e.stopPropagation();
     });
   }
 
-  return {show: show};
-}());
+  return { show };
+})();

@@ -1,8 +1,8 @@
 /* exported $dlgFont */
 /* global comList: true */
 /* eslint no-console: ["error", { allow: ["log"]   }] */
-var $dlgFont = (function() {
-  var $dlg = $(''
+let $dlgFont = (() => {
+  let $dlg = $(''
       + '<div class="notepad-dlg-mask notepad-dlg-font">'
         + '<div class="dialogbox notepad-dlgbox">'
           + '<div class="notepad-dlg-titlebar">'
@@ -32,17 +32,17 @@ var $dlgFont = (function() {
         + '</div>'
       + '</div>');
 
-  var $btnOk = $dlg.find('.btn-ok'),
-      $btnClose = $dlg.find('.close-btn'),
+  let $btnOk     = $dlg.find('.btn-ok'),
+      $btnClose  = $dlg.find('.close-btn'),
       $btnCancel = $dlg.find('.btn-cancel'),
-      $sample = $dlg.find('.sample-txt'),
-      $titleBar = $dlg.find('.notepad-dlg-titlebar');
+      $sample    = $dlg.find('.sample-txt'),
+      $titleBar  = $dlg.find('.notepad-dlg-titlebar');
 
-  var fonts = ['Agency FB', 'Algerian', 'Arial', 'Arial Rounded MT', 'Axure Handwriting', 'Bahnschrift', 'Baskerville Old Face', 'Bauhaus 93', 'Bell MT', 'Berlin Sans FB', 'Bernard MT', 'BlackAdder ITC'],
+  let fonts = ['Agency FB', 'Algerian', 'Arial', 'Arial Rounded MT', 'Axure Handwriting', 'Bahnschrift', 'Baskerville Old Face', 'Bauhaus 93', 'Bell MT', 'Berlin Sans FB', 'Bernard MT', 'BlackAdder ITC'],
       styles = ['常规', '斜体', '粗体', '粗偏斜体'],
       sizes = ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '26', '28', '36', '48', '72'];
 
-  var cfg = {
+  let cfg = {
     family: 'Arial',
     style: '常规',
     size: '16',
@@ -69,39 +69,39 @@ var $dlgFont = (function() {
   }
 
   function init() {
-    var lstFamily = new comList();
+    let lstFamily = new comList();
     lstFamily.show({
       container: '.notepad-dlg-font .font-family',
       width: '176px',
       list: fonts,
       select: fonts.indexOf(cfg.family),
       isFont: true,
-      selectHandler: function(e) {
+      selectHandler: (e) => {
         cfg.family = fonts[e];
         sample();
       }
     });
 
-    var lstStyle = new comList();
+    let lstStyle = new comList();
     lstStyle.show({
       container: '.notepad-dlg-font .font-style',
       width: '132px',
       list: styles,
       select: styles.indexOf(cfg.style),
       isFontStyle: true,
-      selectHandler: function(e) {
+      selectHandler: (e) => {
         cfg.style = styles[e];
         sample();
       }
     });
 
-    var lstSize = new comList();
+    let lstSize = new comList();
     lstSize.show({
       container: '.notepad-dlg-font .font-size',
       width: '64px',
       list: sizes,
       select: sizes.indexOf(cfg.size),
-      selectHandler: function(e) {
+      selectHandler: (e) => {
         cfg.size = sizes[e];
         sample();
       }
@@ -121,20 +121,20 @@ var $dlgFont = (function() {
 
     $btnClose.click(destory);
     $btnCancel.click(destory);
-    $btnOk.click(function() {
+    $btnOk.click(() => {
       cfg.okHandler({
         family: cfg.family,
-        style: cfg.style,
-        size: cfg.size
+        style:  cfg.style,
+        size:   cfg.size
       });
 
       destory();
     });
 
-    $dlg.click(function(e) {
+    $dlg.click((e) => {
       e.stopPropagation();
     });
   }
 
-  return {show: show};
-}());
+  return { show };
+})();

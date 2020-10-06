@@ -52,7 +52,7 @@ module.exports = function (grunt) {
         dest: 'dist/bundle.css'
       }
     },
-    uglify: {
+    terser: {
       'dist/bundle.min.js': 'dist/bundle.js'
     },
     cssmin: {
@@ -77,7 +77,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-eslint');
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-terser');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -86,5 +86,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-usemin');
 
   grunt.registerTask('lint', ['htmlhint', 'csslint', 'eslint']);
-  grunt.registerTask('build', ['copy:html', 'useminPrepare', 'concat', 'uglify', 'cssmin', 'usemin', 'htmlmin', 'imagemin', 'clean:end']);
+  grunt.registerTask('build', ['copy:html', 'useminPrepare', 'concat', 'terser', 'cssmin', 'usemin', 'htmlmin', 'imagemin', 'clean:end']);
 };

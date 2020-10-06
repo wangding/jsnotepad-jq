@@ -1,6 +1,6 @@
 /* exported $dlgSearch */
-var $dlgSearch = (function() {
-  var $dlg = $(''
+let $dlgSearch = (() => {
+  let $dlg = $(''
       + '<div class="notepad-dlg-search">'
         + '<div class="dialogbox notepad-dlgbox">'
           + '<div class="notepad-dlg-titlebar">'
@@ -21,7 +21,7 @@ var $dlgSearch = (function() {
         + '</div>'
       + '</div>');
 
-  var $btnClose = $dlg.find('.close-btn'),
+  let $btnClose = $dlg.find('.close-btn'),
       $btnCancel = $dlg.find('.btn-cancel'),
       $btnSearch = $dlg.find('.btn-search'),
       $txtContent = $dlg.find('.txt-content'),
@@ -54,7 +54,7 @@ var $dlgSearch = (function() {
     $btnClose.click(destoryDlg);
     $btnCancel.click(destoryDlg);
     $txtContent.keyup(verify);
-    $btnSearch.click(function() {
+    $btnSearch.click(() => {
       searchHandler({
         content: $txtContent.val(),
         capitalSense: $dlg.find('input[type="checkbox"]:checked').val() === 'capital-sense',
@@ -62,10 +62,10 @@ var $dlgSearch = (function() {
       });
     });
 
-    $txtContent.click(function(e) {
+    $txtContent.click((e) => {
       e.stopPropagation();
     });
   }
 
-  return {show: show};
+  return { show };
 })();

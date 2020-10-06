@@ -1,17 +1,17 @@
 /* exported comList */
 function comList() {
-  var $comList = $(''
+  let $comList = $(''
       + '<div class="notepad-com-list">'
         + '<input class="editor" type="text"><br>'
         + '<ul class="list">'
         + '</ul>'
       + '</div>');
 
-  var $editor = $comList.find('.editor'),
-      $list = $comList.find('.list'),
+  let $editor = $comList.find('.editor'),
+      $list   = $comList.find('.list'),
       $items;
 
-  var cfg = {
+  let cfg = {
     container: '',
     list: [],
     select: 0,
@@ -39,7 +39,7 @@ function comList() {
   }
 
   function fillData() {
-    var i = 0, $item;
+    let i = 0, $item;
 
     if(cfg.isFont) {
       for(i=0; i<cfg.list.length; i++) {
@@ -70,21 +70,21 @@ function comList() {
   }
 
   function init() {
-    var $oldList = $(cfg.container).find('.notepad-com-list');
+    let $oldList = $(cfg.container).find('.notepad-com-list');
     if($oldList.length !== 0) $oldList.remove();
-     
+
     $(cfg.container).append($comList);
-    
+
     $comList.css({ width: cfg.width });
     fillData();
     setSelect(cfg.select);
   }
 
-  this.show = function(conf) {
+  this.show = (conf) => {
     $.extend(cfg, conf);
     init();
 
-    $list.click(function(e) {
+    $list.click((e) => {
       $($items[cfg.select]).removeClass('selected');
       cfg.select = cfg.list.indexOf($(e.target).html());
       $($items[cfg.select]).addClass('selected');
@@ -93,8 +93,8 @@ function comList() {
       cfg.selectHandler(cfg.select);
     });
 
-    $editor.keyup(function() {
-      var i = 0;
+    $editor.keyup(() => {
+      let i = 0;
 
       for(i=0; i<cfg.list.length; i++) {
         if(cfg.list[i].indexOf($editor.val()) === 0) break;

@@ -1,6 +1,6 @@
 /* exported $statusBar */
-var $statusBar = (function() {
-  var $stBar = $(''
+let $statusBar = (function () {
+  let $stBar = $(''
    + '<div class="notepad-statusbar">'
     + '<div class="left-panel"></div>'
     + '<div class="right-panel">'
@@ -8,16 +8,12 @@ var $statusBar = (function() {
     + '</div>'
    + '</div>');
 
-  var $rowCol = $stBar.find('.row-col'),
+  let $rowCol   = $stBar.find('.row-col'),
       strRowCol = '第&nbsp;x&nbsp;行，第&nbsp;y&nbsp;列',
-      cfg = {row: 1, col: 1};
+      cfg       = {row: 1, col: 1};
 
   function display(isVisable) {
-    if(isVisable) {
-      $stBar.css('display', 'block');
-    } else {
-      $stBar.css('display', 'none');
-    }
+    $stBar.css('display', isVisable ? 'block': 'none');
   }
 
   function setRowCol(r, c) {
@@ -31,8 +27,8 @@ var $statusBar = (function() {
   }
 
   return {
-    init: init, 
-    setRowCol: setRowCol,
-    display: display
+    init,
+    setRowCol,
+    display
   };
 }());

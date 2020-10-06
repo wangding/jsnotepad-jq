@@ -1,4 +1,7 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 9
+  },
   "env": {
     "browser": true,
     "jquery": true

@@ -1,6 +1,6 @@
 /* exported $dlgReplace */
-var $dlgReplace = (function() {
-  var $dlg = $(''
+let $dlgReplace = (() => {
+  let $dlg = $(''
       + '<div class="notepad-dlg-replace">'
         + '<div class="dialogbox notepad-dlgbox">'
           + '<div class="notepad-dlg-titlebar">'
@@ -19,29 +19,25 @@ var $dlgReplace = (function() {
         + '</div>'
       + '</div>');
 
-  var cfg = {
-    searchHandler: null,
-    replaceHandler: null,
+  let cfg = {
+    searchHandler:     null,
+    replaceHandler:    null,
     replaceAllHandler: null
   };
 
-  var $btnClose = $dlg.find('.close-btn'),
-      $btnCancel = $dlg.find('.btn-cancel'),
-      $btnSearch = $dlg.find('.btn-search'),
-      $btnReplace = $dlg.find('.btn-replace'),
+  let $btnClose      = $dlg.find('.close-btn'),
+      $btnCancel     = $dlg.find('.btn-cancel'),
+      $btnSearch     = $dlg.find('.btn-search'),
+      $btnReplace    = $dlg.find('.btn-replace'),
       $btnReplaceAll = $dlg.find('.btn-replace-all'),
-      $txtSearch = $dlg.find('.txt-search'),
-      $txtReplace = $dlg.find('.txt-replace'),
-      $titleBar = $dlg.find('.notepad-dlg-titlebar');
+      $txtSearch     = $dlg.find('.txt-search'),
+      $txtReplace    = $dlg.find('.txt-replace'),
+      $titleBar      = $dlg.find('.notepad-dlg-titlebar');
 
   function destoryDlg() { $dlg.remove(); }
 
   function verify() {
-    if($txtSearch.val() !== '') {
-      setBtnEnabled(true);
-    } else {
-      setBtnEnabled(false);
-    }
+    setBtnEnabled($txtSearch.val() !== '');
   }
 
   function setBtnEnabled(enabled) {
@@ -93,11 +89,11 @@ var $dlgReplace = (function() {
     $btnReplace.click(replaceHandler);
     $btnReplaceAll.click(replaceAllHandler);
 
-    $dlg.click(function(e) {
+    $dlg.click((e) => {
       $txtSearch.focus();
       e.stopPropagation();
     });
   }
 
-  return {show: show};
-}());
+  return { show };
+})();

@@ -1,19 +1,19 @@
 /* exported $editor */
-var $editor = (function() {
-  var $DOM = $(''
+let $editor = (() => {
+  let $DOM = $(''
       + '<div class="notepad-editor">'
         + '<textarea spellcheck="false" auto-size="none"></textarea>'
       + '</div>');
 
-  var $textArea = $DOM.find('textarea');
+  let $textArea = $DOM.find('textarea');
 
-  var cfg = {
+  let cfg = {
     posHandler: null,
     contentHandler: null,
     wrap: false
   };
 
-  var bSelect = false;
+  let bSelect = false;
 
   function resize(isBig) {
     if(isBig) {
@@ -27,36 +27,36 @@ var $editor = (function() {
     $textArea.focus();
   }
 
-  $textArea.keyup(function() {
+  $textArea.keyup(() => {
     cfg.posHandler(getRow(), getCol());
     cfg.contentHandler($textArea.val() !== '');
   });
 
-  $textArea.keypress(function() {
+  $textArea.keypress(() => {
     cfg.posHandler(getRow(), getCol());
   });
 
-  $textArea.mousedown(function() { bSelect = true; });
+  $textArea.mousedown(() => { bSelect = true; });
 
-  $textArea.mouseup(function() { bSelect = false; });
+  $textArea.mouseup(() => { bSelect = false; });
 
-  $textArea.mousemove(function() {
+  $textArea.mousemove(() => {
     if(bSelect) cfg.posHandler(getRow(), getCol());
   });
 
-  $textArea.click(function() {
+  $textArea.click(() => {
     cfg.posHandler(getRow(), getCol());
   });
 
   function getCol() {
-    var sub = $textArea.val().substr(0, $textArea[0].selectionStart);
-    var subs = sub.split('\n');
+    let sub = $textArea.val().substr(0, $textArea[0].selectionStart);
+    let subs = sub.split('\n');
 
     return subs[subs.length-1].length + 1;
   }
 
   function getRow() {
-    var sub = $textArea.val().substr(0, $textArea[0].selectionStart);
+    let sub = $textArea.val().substr(0, $textArea[0].selectionStart);
     return sub.split('\n').length;
   }
 
@@ -94,7 +94,7 @@ var $editor = (function() {
   }
 
   function selectAll() {
-    var n = $textArea.val().length;
+    let n = $textArea.val().length;
 
     $textArea[0].selectionStart = 0;
     $textArea[0].selectionEnd = n;
@@ -103,9 +103,9 @@ var $editor = (function() {
   }
 
   function insertDataTime() {
-    var str = $textArea.val();
+    let str = $textArea.val();
 
-    var strLeft = str.substring(0, $textArea[0].selectionStart),
+    let strLeft = str.substring(0, $textArea[0].selectionStart),
         strRight = str.substring($textArea[0].selectionEnd, str.length);
 
     str = strLeft + new Date().toLocaleString() + strRight;
@@ -116,11 +116,11 @@ var $editor = (function() {
   }
 
   function gotoLn(num) {
-    var str = $textArea.val(),
+    let str = $textArea.val(),
         m = 0;
 
-    var aryStr = str.split('\n');
-    for(var i=0; i<num-1; i++) {
+    let aryStr = str.split('\n');
+    for(let i=0; i<num-1; i++) {
       m += aryStr[i].length + 1;
     }
 
@@ -131,19 +131,19 @@ var $editor = (function() {
   }
 
   function bingSearch() {
-    var start = $textArea[0].selectionStart,
+    let start = $textArea[0].selectionStart,
         end   = $textArea[0].selectionEnd;
 
     if(start === end) {
       window.open('https://cn.bing.com/', '_blank');
     } else {
-      var subStr = $textArea.val().substring(start, end);
+      let subStr = $textArea.val().substring(start, end);
       window.open('https://cn.bing.com/search?q=' + subStr, '_blank');
     }
   }
 
   function search(srch) {
-    var content  = $textArea.val(),
+    let content  = $textArea.val(),
         srchCtnt = srch.content;
 
     if(!srch.capitalSense) { // 不区分大小写，把所有字符串都转换成小写
@@ -151,13 +151,13 @@ var $editor = (function() {
       srchCtnt = srchCtnt.toLowerCase();
     }
 
-    var start = $textArea[0].selectionEnd;
-    var result;
+    let start = $textArea[0].selectionEnd;
+    let result;
 
     if(srch.direction === 'down') { // 查找方向，向下
       result = content.indexOf(srchCtnt, start);
     } else { // srch.direction === 'up'，查找方向，向上
-      var subStr = content.substr(0, $textArea[0].selectionStart);
+      let subStr = content.substr(0, $textArea[0].selectionStart);
       result = subStr.lastIndexOf(srchCtnt);
     }
 
@@ -181,18 +181,18 @@ var $editor = (function() {
   }
 
   return {
-    show: show,
-    resize: resize,
-    focus: focus,
-    getTotalLn: getTotalLn,
-    getRow: getRow,
-    getCol: getCol,
-    setWrap: setWrap,
-    selectAll: selectAll,
-    insertDataTime: insertDataTime,
-    gotoLn: gotoLn,
-    bingSearch: bingSearch,
-    search: search,
-    setFont: setFont
+    show,
+    resize,
+    focus,
+    getTotalLn,
+    getRow,
+    getCol,
+    setWrap,
+    selectAll,
+    insertDataTime,
+    gotoLn,
+    bingSearch,
+    search,
+    setFont
   };
-}());
+})();
