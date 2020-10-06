@@ -3,6 +3,7 @@
           $menubar,
           $statusBar,
           $editor,
+          $dlgSave,
           $dlgFont,
           $dlgSearch,
           $dlgReplace,
@@ -14,7 +15,29 @@ np.menuData = [{
     title: '新建(N)',
     shortcut: 'Ctrl+N',
     enabled: true,
-    handler: function() { console.log('新建(N) menu clicked!'); }
+    handler: () => {
+      if(np.hasChanged) {
+        $dlgSave.show({
+          saveHandler: () => {
+            const a = document.createElement('a'),
+                  c = $editor.getContent(),
+                  b = new Blob([c], { type: 'plain/text' });
+
+            a.href = URL.createObjectURL(b);
+            a.download = np.fileName + '.txt';
+            a.click();
+            URL.revokeObjectURL(a.href);
+
+            np.newFile();
+          },
+          notSaveHandler: () => {
+            np.newFile();
+          }
+        });
+      } else {
+        np.newFile();
+      }
+    }
   }, {
     title: '打开(O)...',
     shortcut: 'Ctrl+O',
@@ -210,7 +233,7 @@ np.menuData = [{
     shortcut: '',
     enabled: true,
     handler: () => {
-      np.bShowStatusBar = !(typeof(np.bShowStatusBar) === "boolean" ?
+      np.bShowStatusBar = !(typeof(np.bShowStatusBar) === 'boolean' ?
         np.bShowStatusBar :
         np.bShowStatusBar === 'true') ;
       localStorage.setItem('bShowStatusBar', np.bShowStatusBar);

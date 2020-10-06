@@ -15,8 +15,14 @@ np.fontFamily     = localStorage.getItem('fontFamily') || 'Arial';     // 默认
 np.fontStyle      = localStorage.getItem('fontStyle') || '常规';       // 默认字体样式
 np.fontSize       = localStorage.getItem('fontSize') || '16';          // 默认字体大小：16pt
 
-np.fileName       = '无标题';// 默认文件名
-np.hasChanged     = false;   // 文档是否发生变化
+np.fileName       = '无标题';   // 默认文件名
+np.hasChanged     = false;      // 文档是否发生变化
+
+np.newFile = () => {
+  $editor.newFile();
+  $('title').text('无标题 - 记事本');
+  np.hasChanged = false;
+};
 
 np.fontHandler = (e) => {
   np.fontFamily = e.family;

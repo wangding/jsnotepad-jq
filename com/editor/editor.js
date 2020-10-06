@@ -1,3 +1,4 @@
+/* global np: true */
 /* exported $editor */
 let $editor = (() => {
   let $DOM = $(''
@@ -33,6 +34,14 @@ let $editor = (() => {
   });
 
   $textArea.keypress(() => {
+    let title = $('title').html();
+
+    if(title[0] !== '*') {
+      $('title').text('*' + title);
+    }
+
+    np.hasChanged = true;
+
     cfg.posHandler(getRow(), getCol());
   });
 
@@ -172,6 +181,14 @@ let $editor = (() => {
     cfg.posHandler(getRow(), getCol());
   }
 
+  function getContent() {
+    return $textArea.val();
+  }
+
+  function newFile() {
+    $textArea.val('');
+  }
+
   function show(conf) {
     $.extend(cfg, conf);
 
@@ -187,7 +204,9 @@ let $editor = (() => {
     getTotalLn,
     getRow,
     getCol,
+    getContent,
     setWrap,
+    newFile,
     selectAll,
     insertDataTime,
     gotoLn,

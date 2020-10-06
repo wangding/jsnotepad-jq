@@ -1,0 +1,47 @@
+.notepad-dlg-save {
+  z-index: 10;
+}
+
+.notepad-dlg-save .dialogbox {
+  height: 136px;
+  width: 352px;
+}
+
+.notepad-dlg-save .main {
+  height: 104px;
+  background-color: white;
+}
+
+.notepad-dlg-save .bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 350px;
+  height: 42px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #7171715e;
+}
+
+.notepad-dlg-save .main p {
+  color: #0404b9;
+}
+
+.notepad-dlg-save .bottom input {
+  bottom: 10px;
+  position: absolute;
+  height: 23px;
+}
+.notepad-dlg-save .main .btn-cancel {
+  right: 12px;
+  width: 72px;
+}
+
+.notepad-dlg-save .main .btn-save {
+  right: 191px;
+  width: 72px;
+}
+
+.notepad-dlg-save .main .btn-not-save {
+  right: 93px;
+  width: 89px;
+}
