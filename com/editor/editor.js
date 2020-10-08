@@ -174,6 +174,8 @@ let $editor = (() => {
 
   function getContent() { return $textArea.val(); }
 
+  function setContent(data) { $textArea.val(data); }
+
   function newFile() { $textArea.val(''); }
 
   function show(conf) {
@@ -192,6 +194,7 @@ let $editor = (() => {
     getRow,
     getCol,
     getContent,
+    setContent,
     setWrap,
     newFile,
     selectAll,

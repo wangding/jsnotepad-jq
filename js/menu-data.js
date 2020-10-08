@@ -19,15 +19,7 @@ np.menuData = [{
       if(np.hasChanged) {
         $dlgSave.show({
           saveHandler: () => {
-            const a = document.createElement('a'),
-                  c = $editor.getContent(),
-                  b = new Blob([c], { type: 'plain/text' });
-
-            a.href = URL.createObjectURL(b);
-            a.download = np.fileName + '.txt';
-            a.click();
-            URL.revokeObjectURL(a.href);
-
+            np.saveFile();
             np.newFile();
           },
           notSaveHandler: () => np.newFile()
@@ -40,7 +32,19 @@ np.menuData = [{
     title: '打开(O)...',
     shortcut: 'Ctrl+O',
     enabled: true,
-    handler: () => { console.log('打开(O) menu clicked!'); }
+    handler: () => {
+      if(np.hasChanged) {
+        $dlgSave.show({
+          saveHandler: () => {
+            np.saveFile();
+            np.openFile();
+          },
+          notSaveHandler: () => np.openFile()
+        });
+      } else {
+        np.openFile();
+      }
+    }
   }, {
     title: '保存(S)',
     shortcut: 'Ctrl+S',
