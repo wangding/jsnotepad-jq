@@ -21,11 +21,11 @@ let $dlgSearch = (() => {
         + '</div>'
       + '</div>');
 
-  let $btnClose = $dlg.find('.close-btn'),
-      $btnCancel = $dlg.find('.btn-cancel'),
-      $btnSearch = $dlg.find('.btn-search'),
+  let $btnClose   = $dlg.find('.close-btn'),
+      $btnCancel  = $dlg.find('.btn-cancel'),
+      $btnSearch  = $dlg.find('.btn-search'),
       $txtContent = $dlg.find('.txt-content'),
-      $titleBar = $dlg.find('.notepad-dlg-titlebar');
+      $titleBar   = $dlg.find('.notepad-dlg-titlebar');
 
   function destoryDlg() { $dlg.remove(); }
 
@@ -54,17 +54,13 @@ let $dlgSearch = (() => {
     $btnClose.click(destoryDlg);
     $btnCancel.click(destoryDlg);
     $txtContent.keyup(verify);
-    $btnSearch.click(() => {
-      searchHandler({
-        content: $txtContent.val(),
-        capitalSense: $dlg.find('input[type="checkbox"]:checked').val() === 'capital-sense',
-        direction: $dlg.find('input[name="direction"]:checked').val()
-      });
-    });
+    $btnSearch.click(() => searchHandler({
+      content: $txtContent.val(),
+      capitalSense: $dlg.find('input[type="checkbox"]:checked').val() === 'capital-sense',
+      direction: $dlg.find('input[name="direction"]:checked').val()
+    }));
 
-    $txtContent.click((e) => {
-      e.stopPropagation();
-    });
+    $txtContent.click((e) => e.stopPropagation());
   }
 
   return { show };

@@ -148,16 +148,12 @@ let $menubar = (() => {
     active = -1;
   }
 
-  function init() {
+  function show(data) {
+    menuData = data;
     createMenuTitle();
     createMenus();
 
     $('body').append($bar);
-  }
-
-  function show(data) {
-    menuData = data;
-    init();
   }
 
   return {

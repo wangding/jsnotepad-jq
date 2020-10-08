@@ -24,9 +24,7 @@ let $editor = (() => {
     }
   }
 
-  function focus() {
-    $textArea.focus();
-  }
+  function focus() { $textArea.focus(); }
 
   $textArea.keyup(() => {
     cfg.posHandler(getRow(), getCol());
@@ -45,17 +43,15 @@ let $editor = (() => {
     cfg.posHandler(getRow(), getCol());
   });
 
-  $textArea.mousedown(() => { bSelect = true; });
+  $textArea.mousedown(() => bSelect = true);
 
-  $textArea.mouseup(() => { bSelect = false; });
+  $textArea.mouseup(() => bSelect = false);
 
   $textArea.mousemove(() => {
     if(bSelect) cfg.posHandler(getRow(), getCol());
   });
 
-  $textArea.click(() => {
-    cfg.posHandler(getRow(), getCol());
-  });
+  $textArea.click(() => cfg.posHandler(getRow(), getCol()));
 
   function getCol() {
     let sub = $textArea.val().substr(0, $textArea[0].selectionStart);
@@ -88,16 +84,11 @@ let $editor = (() => {
 
     if(e.style === '斜体') {
       $textArea.css({'font-style': 'italic'});
-      return;
-    }
-
-    if(e.style === '粗体') {
+    } else if(e.style === '粗体') {
       $textArea.css({'font-weight': 'bold'});
-      return;
-    }
-
-    if(e.style === '粗偏斜体') {
+    } else if(e.style === '粗偏斜体') {
       $textArea.css({'font-weight': 'bold', 'font-style': 'italic'});
+    } else {
       return;
     }
   }
@@ -181,13 +172,9 @@ let $editor = (() => {
     cfg.posHandler(getRow(), getCol());
   }
 
-  function getContent() {
-    return $textArea.val();
-  }
+  function getContent() { return $textArea.val(); }
 
-  function newFile() {
-    $textArea.val('');
-  }
+  function newFile() { $textArea.val(''); }
 
   function show(conf) {
     $.extend(cfg, conf);

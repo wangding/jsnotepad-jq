@@ -54,16 +54,11 @@ let $dlgFont = (() => {
 
     if(cfg.style === '斜体') {
       $sample.css({'font-style': 'italic'});
-      return;
-    }
-
-    if(cfg.style === '粗体') {
+    } else if(cfg.style === '粗体') {
       $sample.css({'font-weight': 'bold'});
-      return;
-    }
-
-    if(cfg.style === '粗偏斜体') {
+    } else if(cfg.style === '粗偏斜体') {
       $sample.css({'font-weight': 'bold', 'font-style': 'italic'});
+    } else {
       return;
     }
   }
@@ -131,9 +126,7 @@ let $dlgFont = (() => {
       destory();
     });
 
-    $dlg.click((e) => {
-      e.stopPropagation();
-    });
+    $dlg.click((e) => e.stopPropagation());
   }
 
   return { show };

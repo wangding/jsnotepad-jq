@@ -24,16 +24,11 @@ function comList() {
   function setFontStyle(item, style) {
     if(style === '斜体') {
       item.css({'font-style': 'italic'});
-      return;
-    }
-
-    if(style === '粗体') {
+    } else if(style === '粗体') {
       item.css({'font-weight': 'bold'});
-      return;
-    }
-
-    if(style === '粗偏斜体') {
+    } else if(style === '粗偏斜体') {
       item.css({'font-weight': 'bold', 'font-style': 'italic'});
+    } else {
       return;
     }
   }

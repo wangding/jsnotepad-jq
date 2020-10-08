@@ -30,9 +30,7 @@ np.menuData = [{
 
             np.newFile();
           },
-          notSaveHandler: () => {
-            np.newFile();
-          }
+          notSaveHandler: () => np.newFile()
         });
       } else {
         np.newFile();
@@ -42,7 +40,7 @@ np.menuData = [{
     title: '打开(O)...',
     shortcut: 'Ctrl+O',
     enabled: true,
-    handler: function() { console.log('打开(O) menu clicked!'); }
+    handler: () => { console.log('打开(O) menu clicked!'); }
   }, {
     title: '保存(S)',
     shortcut: 'Ctrl+S',
@@ -122,16 +120,12 @@ np.menuData = [{
     title: '使用 Bing 搜索...',
     shortcut: 'Ctrl+E',
     enabled: true,
-    handler: function() { $editor.bingSearch(); }
+    handler: () => $editor.bingSearch()
   }, {
     title: '查找(F)...',
     shortcut: 'Ctrl+F',
     enabled: false,
-    handler: function() {
-      $dlgSearch.show(function(srch) {
-        $editor.search(srch);
-      });
-    }
+    handler: () => $dlgSearch.show((srch) => $editor.search(srch))
   }, {
     title: '查找下一个(N)',
     shortcut: 'F3',
@@ -141,32 +135,20 @@ np.menuData = [{
     title: '替换(R)...',
     shortcut: 'Ctrl+H',
     enabled: true,
-    handler: function() {
-      $dlgReplace.show({
-        searchHandler: function(e) {
-          $editor.search(e);
-        },
-        replaceHandler: function(e) {
-          $editor.replace(e);
-        },
-        replaceAllHandler: function(e) {
-          $editor.replaceAll(e);
-        }
-      });
-    }
+    handler: () => $dlgReplace.show({
+      searchHandler: (e) => $editor.search(e),
+      replaceHandler: (e) => $editor.replace(e),
+      replaceAllHandler: (e) => $editor.replaceAll(e)
+    })
   }, {
     title: '转到(G)...',
     shortcut: 'Ctrl+G',
     enabled: true,
-    handler: function() {
-      $dlgGoto.show({
-        lineNum: $editor.getRow(),
-        totalLine: $editor.getTotalLn(),
-        gotoHandler: function(lineNum) {
-          $editor.gotoLn(lineNum);
-        }
-      });
-    }
+    handler: () => $dlgGoto.show({
+      lineNum: $editor.getRow(),
+      totalLine: $editor.getTotalLn(),
+      gotoHandler: (lineNum) => $editor.gotoLn(lineNum)
+    })
   }, {
     title: 'hr',
     shortcut: '',
@@ -176,12 +158,12 @@ np.menuData = [{
     title: '全选(A)',
     shortcut: 'Ctrl+A',
     enabled: true,
-    handler: function() { $editor.selectAll(); }
+    handler: () => $editor.selectAll()
   }, {
     title: '时间/日期(D)',
     shortcut: 'F5',
     enabled: true,
-    handler: function() { $editor.insertDataTime(); }
+    handler: () => $editor.insertDataTime()
   }],
   width: '218px',
   left: '52px'
@@ -215,14 +197,12 @@ np.menuData = [{
     title: '字体(F)...',
     shortcut: '',
     enabled: true,
-    handler: () => {
-      $dlgFont.show({
-        family: np.fontFamily,
-        style: np.fontStyle,
-        size: np.fontSize,
-        okHandler: np.fontHandler
-      });
-    }
+    handler: () => $dlgFont.show({
+      family: np.fontFamily,
+      style: np.fontStyle,
+      size: np.fontSize,
+      okHandler: np.fontHandler
+    })
   }],
   width: '156px',
   left: '106px'
@@ -250,14 +230,12 @@ np.menuData = [{
     title: '查看帮助(H)',
     shortcut: '',
     enabled: true,
-    handler: () => {
-      window.open('https://cn.bing.com/search?q=获取有关+windows+10+中的记事本的帮助', '_blank');
-    }
+    handler: () => window.open('https://cn.bing.com/search?q=获取有关+windows+10+中的记事本的帮助', '_blank')
   }, {
     title: '关于记事本(A)',
     shortcut: '',
     enabled: true,
-    handler: () => { $dlgAbout.show(); }
+    handler: () => $dlgAbout.show()
   }],
   width: '166px',
   left: '216px'
