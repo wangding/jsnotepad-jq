@@ -1,0 +1,10 @@
+@media print {
+  .notepad-menubar, .notepad-statusbar {
+    display: none !important;
+  }
+
+  .notepad-editor textarea {
+    border: none !important;
+    overflow: hidden !important;
+  }
+}

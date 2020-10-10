@@ -1,6 +1,7 @@
 {
-    "order-alphabetical": false,
-    "box-model": false,
-    "outline-none": false,
-    "box-sizing": false
+  "order-alphabetical": false,
+  "box-model": false,
+  "outline-none": false,
+  "important": false,
+  "box-sizing": false
 }

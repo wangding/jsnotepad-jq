@@ -72,12 +72,12 @@ np.menuData = [{
     title: '页面设置(U)...',
     shortcut: '',
     enabled: true,
-    handler: function() { console.log('页面设置(U) menu clicked!'); }
+    handler: () => print()
   }, {
     title: '打印(P)...',
     shortcut: 'Ctrl+P',
     enabled: true,
-    handler: function() { console.log('打印(P) menu clicked!'); }
+    handler: () => print()
   }, {
     title: 'hr',
     shortcut: '',

@@ -40,6 +40,10 @@ module.exports = function (grunt) {
       html: {
         src: './index.html',
         dest: './dist/index.html'
+      },
+      css: {
+        src: './css/print.css',
+        dest: './dist/css/print.css'
       }
     },
     concat: {
@@ -48,7 +52,7 @@ module.exports = function (grunt) {
         dest: 'dist/bundle.js'
       },
       css: {
-        src: ['css/*.css', './com/**/*.css'],
+        src: ['css/*.css', '!css/print.css', './com/**/*.css'],
         dest: 'dist/bundle.css'
       }
     },
@@ -86,5 +90,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-usemin');
 
   grunt.registerTask('lint', ['htmlhint', 'csslint', 'eslint']);
-  grunt.registerTask('build', ['copy:html', 'useminPrepare', 'concat', 'terser', 'cssmin', 'usemin', 'htmlmin', 'imagemin', 'clean:end']);
+  grunt.registerTask('build', ['copy:html', 'copy:css', 'useminPrepare', 'concat', 'terser', 'cssmin', 'usemin', 'htmlmin', 'imagemin', 'clean:end']);
 };
