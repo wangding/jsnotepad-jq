@@ -1,5 +1,5 @@
 /* exported $dlgFont */
-/* global comList: true */
+/* global comList, np: true */
 /* eslint no-console: ["error", { allow: ["log"]   }] */
 let $dlgFont = (() => {
   let $dlg = $(''
@@ -39,7 +39,7 @@ let $dlgFont = (() => {
       $titleBar  = $dlg.find('.notepad-dlg-titlebar');
 
   let fonts = ['Agency FB', 'Algerian', 'Arial', 'Arial Rounded MT', 'Axure Handwriting', 'Bahnschrift', 'Baskerville Old Face', 'Bauhaus 93', 'Bell MT', 'Berlin Sans FB', 'Bernard MT', 'BlackAdder ITC'],
-      styles = ['常规', '斜体', '粗体', '粗偏斜体'],
+      styles = ['常规', '斜体', '粗体', '粗斜体'],
       sizes = ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '26', '28', '36', '48', '72'];
 
   let cfg = {
@@ -51,16 +51,7 @@ let $dlgFont = (() => {
 
   function sample() {
     $sample.css({ 'font-family': cfg.family, 'font-size': cfg.size + 'pt' });
-
-    if(cfg.style === '斜体') {
-      $sample.css({'font-style': 'italic'});
-    } else if(cfg.style === '粗体') {
-      $sample.css({'font-weight': 'bold'});
-    } else if(cfg.style === '粗偏斜体') {
-      $sample.css({'font-weight': 'bold', 'font-style': 'italic'});
-    } else {
-      return;
-    }
+    np.setFontStyle($sample, cfg.style);
   }
 
   function init() {

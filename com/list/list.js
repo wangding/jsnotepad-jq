@@ -1,3 +1,4 @@
+/* global np: true */
 /* exported comList */
 function comList() {
   let $comList = $(''
@@ -21,18 +22,6 @@ function comList() {
     selectHandler: null
   };
 
-  function setFontStyle(item, style) {
-    if(style === '斜体') {
-      item.css({'font-style': 'italic'});
-    } else if(style === '粗体') {
-      item.css({'font-weight': 'bold'});
-    } else if(style === '粗偏斜体') {
-      item.css({'font-weight': 'bold', 'font-style': 'italic'});
-    } else {
-      return;
-    }
-  }
-
   function fillData() {
     let i = 0, $item;
 
@@ -45,7 +34,7 @@ function comList() {
     } else if(cfg.isFontStyle) {
       for(i=0; i<cfg.list.length; i++) {
         $item = $('<li class="item"></li>');
-        setFontStyle($item, cfg.list[i]);
+        np.setFontStyle($item, cfg.list[i]);
         $list.append($item.html(cfg.list[i]));
       }
     } else {
@@ -62,6 +51,7 @@ function comList() {
     $($items[n]).addClass('selected');
     $editor.val(cfg.list[n]);
     $editor.select();
+    $items[n].scrollIntoView({behavior: 'smooth', block: 'start'});
   }
 
   function init() {

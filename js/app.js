@@ -49,6 +49,17 @@ np.newFile = () => {
   np.hasChanged = false;
 };
 
+np.setFontStyle = (item, style) => {
+  let conf = {
+    '常规':   {'font-weight': 'normal', 'font-style': 'normal'},
+    '斜体':   {'font-weight': 'normal', 'font-style': 'italic'},
+    '粗体':   {'font-weight': 'bold',   'font-style': 'normal'},
+    '粗斜体': {'font-weight': 'bold',   'font-style': 'italic'}
+  };
+
+  item.css(conf[style]);
+};
+
 np.fontHandler = (e) => {
   np.fontFamily = e.family;
   np.fontStyle  = e.style;

@@ -81,16 +81,7 @@ let $editor = (() => {
 
   function setFont(e) {
     $textArea.css({'font-family': e.family, 'font-size': e.size + 'pt'});
-
-    if(e.style === '斜体') {
-      $textArea.css({'font-style': 'italic'});
-    } else if(e.style === '粗体') {
-      $textArea.css({'font-weight': 'bold'});
-    } else if(e.style === '粗偏斜体') {
-      $textArea.css({'font-weight': 'bold', 'font-style': 'italic'});
-    } else {
-      return;
-    }
+    np.setFontStyle($textArea, e.style);
   }
 
   function selectAll() {
