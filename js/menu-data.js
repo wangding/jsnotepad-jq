@@ -58,7 +58,11 @@ np.menuData = [{
     title: '另存为(A)...',
     shortcut: '',
     enabled: true,
-    handler: function() { console.log('另存为(A) menu clicked!'); }
+    handler: () => {
+      np.saveFile();
+      np.hasChanged = false;
+      $('title').text(np.fileName + ' - 记事本');
+    }
   }, {
     title: 'hr',
     shortcut: '',
@@ -83,7 +87,7 @@ np.menuData = [{
     title: '退出(X)',
     shortcut: '',
     enabled: true,
-    handler: function() { console.log('退出(X) menu clicked!'); }
+    handler: () => console.log('退出(X) menu clicked!')
   }],
   width: '202px',
   left: '0px'
