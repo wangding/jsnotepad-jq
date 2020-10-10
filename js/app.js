@@ -38,7 +38,11 @@ np.openFile = () => {
   dom.onchange = () => {
     let reader = new FileReader();
     reader.readAsText(dom.files[0]);
-    $('title').text(dom.files[0].name.split('.')[0] + ' - 记事本');
+
+    let fileName = dom.files[0].name.split('.')[0];
+    $('title').text(fileName + ' - 记事本');
+    np.fileName = fileName;
+
     reader.onloadend = (e) => $editor.setContent(e.currentTarget.result);
   };
 };

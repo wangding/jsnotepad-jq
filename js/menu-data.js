@@ -49,7 +49,11 @@ np.menuData = [{
     title: '保存(S)',
     shortcut: 'Ctrl+S',
     enabled: true,
-    handler: function() { console.log('保存(S) menu clicked!'); }
+    handler: () => {
+      np.saveFile();
+      np.hasChanged = false;
+      $('title').text(np.fileName + ' - 记事本');
+    }
   }, {
     title: '另存为(A)...',
     shortcut: '',
