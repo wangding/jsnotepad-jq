@@ -1,42 +1,34 @@
 /* exported $dlgFont */
-/* global comList, np: true */
+/* global comList, np, Dialog: true */
 /* eslint no-console: ["error", { allow: ["log"]   }] */
-let $dlgFont = (() => {
-  let $dlg = $(''
-      + '<div class="notepad-dlg-mask notepad-dlg-font">'
-        + '<div class="dialogbox notepad-dlgbox">'
-          + '<div class="notepad-dlg-titlebar">'
-            + '<p class="title">字体</p>'
-            + '<span class="close-btn" title="关闭">✖</span>'
-          + '</div>'
-          + '<div class="main notepad-dlg-main">'
-            + '<div class="font-family"><p>字体(F):</p></div>'
-            + '<div class="font-style"><p>字形(Y):</p></div>'
-            + '<div class="font-size"><p>大小(S):</p></div>'
-            + '<fieldset class="sample">'
-              + '<legend>示例</legend>'
-              + '<p class="sample-txt">AaBbYyZz</p>'
-            + '</fieldset>'
-            + '<div class="script">'
-              + '<label>'
-                + '脚本(R):<br>'
-                + '<select>'
-                  + '<option value="西欧语言">西欧语言</option>'
-                  + '<option value="中文 GB2312">中文 GB2312</option>'
-                + '</select>'
-              + '</label>'
-            + '</div>'
-            + '<input class="btn-ok btn" type="button" value="确定">'
-            + '<input class="btn-cancel btn" type="button" value="取消">'
-          + '</div>'
-        + '</div>'
-      + '</div>');
+let $dlgFont = new Dialog('font');
+
+((dlg) => {
+  let content = ''
+    + '<div class="font-family"><p>字体(F):</p></div>'
+    + '<div class="font-style"><p>字形(Y):</p></div>'
+    + '<div class="font-size"><p>大小(S):</p></div>'
+    + '<fieldset class="sample">'
+      + '<legend>示例</legend>'
+      + '<p class="sample-txt">AaBbYyZz</p>'
+    + '</fieldset>'
+    + '<div class="script">'
+      + '<label>'
+        + '脚本(R):<br>'
+        + '<select>'
+          + '<option value="西欧语言">西欧语言</option>'
+          + '<option value="中文 GB2312">中文 GB2312</option>'
+        + '</select>'
+      + '</label>'
+    + '</div>'
+    + '<input class="btn-ok btn" type="button" value="确定">'
+    + '<input class="btn-cancel btn" type="button" value="取消">';
+
+  let $dlg       = dlg.generate(content, '字体');
 
   let $btnOk     = $dlg.find('.btn-ok'),
-      $btnClose  = $dlg.find('.close-btn'),
       $btnCancel = $dlg.find('.btn-cancel'),
-      $sample    = $dlg.find('.sample-txt'),
-      $titleBar  = $dlg.find('.notepad-dlg-titlebar');
+      $sample    = $dlg.find('.sample-txt');
 
   let fonts = ['Agency FB', 'Algerian', 'Arial', 'Arial Rounded MT', 'Axure Handwriting', 'Bahnschrift', 'Baskerville Old Face', 'Bauhaus 93', 'Bell MT', 'Berlin Sans FB', 'Bernard MT', 'BlackAdder ITC'],
       styles = ['常规', '斜体', '粗体', '粗斜体'],
@@ -54,7 +46,7 @@ let $dlgFont = (() => {
     np.setFontStyle($sample, cfg.style);
   }
 
-  function init() {
+  function initList() {
     let lstFamily = new comList();
     lstFamily.show({
       container: '.notepad-dlg-font .font-family',
@@ -96,17 +88,14 @@ let $dlgFont = (() => {
     sample();
   }
 
-  function destory() { $dlg.remove(); }
-
-  function show(conf) {
+  dlg.show = (conf) => {
     $.extend(cfg, conf);
 
     $('body').append($dlg);
-    init();
-    $dlg.find('.dialogbox').draggable({handle: $titleBar});
+    dlg.init();
+    initList();
 
-    $btnClose.click(destory);
-    $btnCancel.click(destory);
+    $btnCancel.click(dlg.destory);
     $btnOk.click(() => {
       cfg.okHandler({
         family: cfg.family,
@@ -114,11 +103,9 @@ let $dlgFont = (() => {
         size:   cfg.size
       });
 
-      destory();
+      dlg.destory();
     });
 
     $dlg.click((e) => e.stopPropagation());
-  }
-
-  return { show };
-})();
+  };
+})($dlgFont);

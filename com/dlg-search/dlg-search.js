@@ -1,33 +1,23 @@
+/* global Dialog: true */
 /* exported $dlgSearch */
-let $dlgSearch = (() => {
-  let $dlg = $(''
-      + '<div class="notepad-dlg-search">'
-        + '<div class="dialogbox notepad-dlgbox">'
-          + '<div class="notepad-dlg-titlebar">'
-            + '<p class="title">查找</p>'
-            + '<span class="close-btn" title="关闭">✖</span>'
-          + '</div>'
-          + '<div class="main notepad-dlg-main">'
-            + '<label>查找内容(N): <input class="txt-content" type="text" autofocus></label><br>'
-            + '<label><input type="checkbox" value="capital-sense">区分大小写(C)</label>'
-            + '<fieldset class="search-direction">'
-              + '<legend>方向</legend>'
-              + '<label><input type="radio" name="direction" value="up">向上(U)</label>'
-              + '<label><input type="radio" name="direction" value="down" checked>向下(D)</label>'
-            + '</fieldset>'
-            + '<input class="btn-search btn" type="button" value="查找下一个(F)" disabled>'
-            + '<input class="btn-cancel btn" type="button" value="取消">'
-          + '</div>'
-        + '</div>'
-      + '</div>');
+let $dlgSearch = new Dialog('search', false);
 
-  let $btnClose   = $dlg.find('.close-btn'),
-      $btnCancel  = $dlg.find('.btn-cancel'),
+((dlg) => {
+  let content = ''
+    + '<label>查找内容(N): <input class="txt-content" type="text" autofocus></label><br>'
+    + '<label><input type="checkbox" value="capital-sense">区分大小写(C)</label>'
+    + '<fieldset class="search-direction">'
+      + '<legend>方向</legend>'
+      + '<label><input type="radio" name="direction" value="up">向上(U)</label>'
+      + '<label><input type="radio" name="direction" value="down" checked>向下(D)</label>'
+    + '</fieldset>'
+    + '<input class="btn-search btn" type="button" value="查找下一个(F)" disabled>'
+    + '<input class="btn-cancel btn" type="button" value="取消">';
+
+  let $dlg        = dlg.generate(content, '查找');
+  let $btnCancel  = $dlg.find('.btn-cancel'),
       $btnSearch  = $dlg.find('.btn-search'),
-      $txtContent = $dlg.find('.txt-content'),
-      $titleBar   = $dlg.find('.notepad-dlg-titlebar');
-
-  function destoryDlg() { $dlg.remove(); }
+      $txtContent = $dlg.find('.txt-content');
 
   function verify() {
     if($txtContent.val() !== '') {
@@ -37,8 +27,7 @@ let $dlgSearch = (() => {
     }
   }
 
-  function init() {
-    $dlg.find('.dialogbox').draggable({handle: $titleBar});
+  function initState() {
     $dlg.find('input[value="up"]').removeAttr('checked');
     $dlg.find('input[value="down"]')[0].checked = true;
     $dlg.find('input[type="checkbox"]').removeAttr('checked');
@@ -47,12 +36,12 @@ let $dlgSearch = (() => {
     $txtContent.focus();
   }
 
-  function show(searchHandler) {
+  dlg.show = (searchHandler) => {
     $('body').append($dlg);
-    init();
+    dlg.init();
+    initState();
 
-    $btnClose.click(destoryDlg);
-    $btnCancel.click(destoryDlg);
+    $btnCancel.click(dlg.destory);
     $txtContent.keyup(verify);
     $btnSearch.click(() => searchHandler({
       content: $txtContent.val(),
@@ -61,7 +50,5 @@ let $dlgSearch = (() => {
     }));
 
     $txtContent.click((e) => e.stopPropagation());
-  }
-
-  return { show };
-})();
+  };
+})($dlgSearch);

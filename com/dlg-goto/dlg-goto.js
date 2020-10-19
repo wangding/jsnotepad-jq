@@ -1,26 +1,18 @@
+/* global Dialog: true */
 /* exported $dlgGoto */
-let $dlgGoto = (() => {
-  let $dlg = $(''
-        + '<div class="notepad-dlg-mask notepad-dlg-goto">'
-          + '<div class="dialogbox notepad-dlgbox">'
-            + '<div class="notepad-dlg-titlebar">'
-              + '<p class="title">转到指定行</p>'
-              + '<span class="close-btn" title="关闭">✖</span>'
-            + '</div>'
-            + '<div class="main notepad-dlg-main">'
-              + '<label for="">行号(L):</label><br>'
-              + '<input class="txt-line-num" type="text" autofocus><br>'
-              + '<input class="btn-goto btn" type="button" value="转到">'
-              + '<input class="btn-cancel btn" type="button" value="取消">'
-            + '</div>'
-          + '</div>'
-        + '</div>');
+let $dlgGoto = new Dialog('goto');
 
-  let $btnClose   = $dlg.find('.close-btn'),
-      $btnCancel  = $dlg.find('.btn-cancel'),
+((dlg) => {
+  let content = ''
+    + '<label for="">行号(L):</label><br>'
+    + '<input class="txt-line-num" type="text" autofocus><br>'
+    + '<input class="btn-goto btn" type="button" value="转到">'
+    + '<input class="btn-cancel btn" type="button" value="取消">';
+
+  let $dlg        = dlg.generate(content, '转到指定行');
+  let $btnCancel  = $dlg.find('.btn-cancel'),
       $btnGoto    = $dlg.find('.btn-goto'),
-      $txtLineNum = $dlg.find('.txt-line-num'),
-      $titleBar   = $dlg.find('.notepad-dlg-titlebar');
+      $txtLineNum = $dlg.find('.txt-line-num');
 
   let $errMsg = $('<div class="err-msg"></div>');
 
@@ -30,13 +22,11 @@ let $dlgGoto = (() => {
     gotoHandler: null
   };
 
-  function destoryDlg() { $dlg.remove(); }
-
   function gotoHandler() {
     if(!validate()) return;
 
     cfg.gotoHandler($txtLineNum.val()); 
-    destoryDlg();
+    dlg.destory();
   }
 
   function filterKey(e) {
@@ -83,17 +73,16 @@ let $dlgGoto = (() => {
     return true;
   }
 
-  function show(conf) {
+  dlg.show = (conf) => {
     $.extend(cfg, conf);
 
     $txtLineNum.focus();
     $txtLineNum.select();
 
     $('body').append($dlg);
-    $dlg.find('.dialogbox').draggable({handle: $titleBar});
+    dlg.init();
 
-    $btnClose.click(destoryDlg);
-    $btnCancel.click(destoryDlg);
+    $btnCancel.click(dlg.destory);
     $btnGoto.click(gotoHandler);
     $txtLineNum.keypress(filterKey);
 
@@ -105,7 +94,5 @@ let $dlgGoto = (() => {
 
     $txtLineNum.val(cfg.lineNum);
     $txtLineNum.select();
-  }
-
-  return { show };
-})();
+  };
+})($dlgGoto);
