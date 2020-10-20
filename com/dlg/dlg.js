@@ -1,16 +1,16 @@
 /* exported Dialog */
-function Dialog(name, model = true) {
-  let $dlg = $(''
-    + '<div class="notepad-dlg-mask">'
-      + '<div class="dialogbox notepad-dlgbox">'
-        + '<div class="notepad-dlg-titlebar">'
-          + '<p class="title"></p>'
-          + '<span class="close-btn" title="关闭">✖</span>'
-        + '</div>'
-        + '<div class="main notepad-dlg-main">'
-        + '</div>'
-      + '</div>'
-    + '</div>');
+function Dialog (name, model = true) {
+  let $dlg = $(`
+    <div class="notepad-dlg-mask">
+      <div class="dialogbox notepad-dlgbox">
+        <div class="notepad-dlg-titlebar">
+          <p class="title"></p>
+          <span class="close-btn" title="关闭">✖</span>
+        </div>
+        <div class="main notepad-dlg-main">
+        </div>
+      </div>
+    </div>`);
 
   let $btnClose = $dlg.find('.close-btn'),
       $titleBar = $dlg.find('.notepad-dlg-titlebar'),

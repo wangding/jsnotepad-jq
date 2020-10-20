@@ -11,7 +11,7 @@ let $menubar = (() => {
    * 3 是查看菜单，4 是帮助菜单 */
   let active = -1;
 
-  function createMenuTitle() {
+  let createMenuTitle = () => {
     let $titles = $('<ul class="menu-title"></ul>');
 
     for(let i=0; i<menuData.length; i++) {
@@ -51,9 +51,9 @@ let $menubar = (() => {
     }
 
     $bar.append($titles);
-  }
+  };
 
-  function createMenus() {
+  let createMenus = () => {
     for(let i=0; i<menuData.length; i++) {
       let $menus = $('<ul class="menus"></ul>'),
           items = menuData[i].menuItems;
@@ -105,7 +105,7 @@ let $menubar = (() => {
       $bar.append($menus);
       menus.push($menus);
     }
-  }
+  };
 
   /**
    * 设置菜单项是否为勾选状态
@@ -114,7 +114,7 @@ let $menubar = (() => {
    * @param col 代表第几个下拉菜单项
    * @param isEnabled true 为勾选，false 为取消勾选
    */
-  function checked(row, col, isChecked) {
+  let checked = (row, col, isChecked) => {
     let menuItem = menus[row].find('.menu-item')[col];
 
     if(isChecked) {
@@ -122,7 +122,7 @@ let $menubar = (() => {
     } else {
       $(menuItem).find('.checked').remove();
     }
-  }
+  };
 
   /**
    * 设置菜单项为启用或禁用状态
@@ -131,7 +131,7 @@ let $menubar = (() => {
    * @param col 代表第几个下拉菜单项
    * @param isEnabled true 为启用，false 为禁用
    */
-  function enabled(row, col, isEnabled) {
+  let enabled = (row, col, isEnabled) => {
     let menuItem = menus[row].find('.menu-item')[col];
 
     if(isEnabled) {
@@ -139,22 +139,22 @@ let $menubar = (() => {
     } else {
       $(menuItem).addClass('disabled');
     }
-  }
+  };
 
-  function hideMenu() {
+  let hideMenu = () => {
     if(active === -1) return;
 
     menus[active].css({display: 'none'});
     active = -1;
-  }
+  };
 
-  function show(data) {
+  let show = (data) => {
     menuData = data;
     createMenuTitle();
     createMenus();
 
     $('body').append($bar);
-  }
+  };
 
   return {
     show,

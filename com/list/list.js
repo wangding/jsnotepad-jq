@@ -1,28 +1,28 @@
 /* global np: true */
 /* exported comList */
 function comList() {
-  let $comList = $(''
-      + '<div class="notepad-com-list">'
-        + '<input class="editor" type="text"><br>'
-        + '<ul class="list">'
-        + '</ul>'
-      + '</div>');
+  let $comList = $(`
+    <div class="notepad-com-list">
+      <input class="editor" type="text"><br>
+      <ul class="list">
+      </ul>
+    </div>`);
 
   let $editor = $comList.find('.editor'),
       $list   = $comList.find('.list'),
       $items;
 
   let cfg = {
-    container: '',
-    list: [],
-    select: 0,
-    width: '200px',
-    isFont: false,
-    isFontStyle: false,
+    container:     '',
+    list:          [],
+    select:        0,
+    width:         '200px',
+    isFont:        false,
+    isFontStyle:   false,
     selectHandler: null
   };
 
-  function fillData() {
+  let fillData = () => {
     let i = 0, $item;
 
     if(cfg.isFont) {
@@ -45,16 +45,16 @@ function comList() {
     }
 
     $items = $list.find('.item');
-  }
+  };
 
-  function setSelect(n) {
+  let setSelect = (n) => {
     $($items[n]).addClass('selected');
     $editor.val(cfg.list[n]);
     $editor.select();
     $items[n].scrollIntoView({behavior: 'smooth', block: 'start'});
-  }
+  };
 
-  function init() {
+  let init = () => {
     let $oldList = $(cfg.container).find('.notepad-com-list');
     if($oldList.length !== 0) $oldList.remove();
 
@@ -63,7 +63,7 @@ function comList() {
     $comList.css({ width: cfg.width });
     fillData();
     setSelect(cfg.select);
-  }
+  };
 
   this.show = (conf) => {
     $.extend(cfg, conf);

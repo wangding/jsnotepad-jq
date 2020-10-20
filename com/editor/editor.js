@@ -1,30 +1,30 @@
 /* global np: true */
 /* exported $editor */
 let $editor = (() => {
-  let $DOM = $(''
-      + '<div class="notepad-editor">'
-        + '<textarea spellcheck="false" auto-size="none"></textarea>'
-      + '</div>');
+  let $DOM = $(`
+    <div class="notepad-editor">
+      <textarea spellcheck="false" auto-size="none"></textarea>
+    </div>`);
 
   let $textArea = $DOM.find('textarea');
 
   let cfg = {
-    posHandler: null,
-    contentHandler: null,
-    wrap: false
+    wrap:           false,
+    posHandler:     null,
+    contentHandler: null
   };
 
   let bSelect = false;
 
-  function resize(isBig) {
+  let resize = (isBig) => {
     if(isBig) {
       $DOM.css({bottom: '21px'});
     } else {
       $DOM.css({bottom: '0'});
     }
-  }
+  };
 
-  function focus() { $textArea.focus(); }
+  let focus = () => $textArea.focus();
 
   $textArea.keyup(() => {
     cfg.posHandler(getRow(), getCol());
@@ -44,32 +44,25 @@ let $editor = (() => {
   });
 
   $textArea.mousedown(() => bSelect = true);
-
   $textArea.mouseup(() => bSelect = false);
-
-  $textArea.mousemove(() => {
-    if(bSelect) cfg.posHandler(getRow(), getCol());
-  });
-
+  $textArea.mousemove(() => { if(bSelect) cfg.posHandler(getRow(), getCol()); });
   $textArea.click(() => cfg.posHandler(getRow(), getCol()));
 
-  function getCol() {
+  let getCol = () => {
     let sub = $textArea.val().substr(0, $textArea[0].selectionStart);
     let subs = sub.split('\n');
 
     return subs[subs.length-1].length + 1;
-  }
+  };
 
-  function getRow() {
+  let getRow = () => {
     let sub = $textArea.val().substr(0, $textArea[0].selectionStart);
     return sub.split('\n').length;
-  }
+  };
 
-  function getTotalLn() {
-    return $textArea.val().split('\n').length;
-  }
+  let getTotalLn = () => $textArea.val().split('\n').length;
 
-  function setWrap(bWrap) {
+  let setWrap = (bWrap) => {
     if(bWrap) {
       $textArea.attr('wrap', 'soft');
       $textArea.css({'overflow-x': 'hidden'});
@@ -77,23 +70,23 @@ let $editor = (() => {
       $textArea.attr('wrap', 'off');
       $textArea.css({'overflow-x': 'scroll'});
     }
-  }
+  };
 
-  function setFont(e) {
+  let setFont = (e) => {
     $textArea.css({'font-family': e.family, 'font-size': e.size + 'pt'});
     np.setFontStyle($textArea, e.style);
-  }
+  };
 
-  function selectAll() {
+  let selectAll = () => {
     let n = $textArea.val().length;
 
     $textArea[0].selectionStart = 0;
     $textArea[0].selectionEnd = n;
 
     $textArea.select();
-  }
+  };
 
-  function insertDataTime() {
+  let insertDataTime = () => {
     let str = $textArea.val();
 
     let strLeft = str.substring(0, $textArea[0].selectionStart),
@@ -104,11 +97,11 @@ let $editor = (() => {
     $textArea.val(str);
     $textArea.focus();
     cfg.posHandler(getRow(), getCol());
-  }
+  };
 
-  function gotoLn(num) {
+  let gotoLn = (num) => {
     let str = $textArea.val(),
-        m = 0;
+        m   = 0;
 
     let aryStr = str.split('\n');
     for(let i=0; i<num-1; i++) {
@@ -119,9 +112,9 @@ let $editor = (() => {
     $textArea[0].selectionEnd = m;
     $textArea.focus();
     cfg.posHandler(getRow(), getCol());
-  }
+  };
 
-  function bingSearch() {
+  let bingSearch = () => {
     let start = $textArea[0].selectionStart,
         end   = $textArea[0].selectionEnd;
 
@@ -131,9 +124,9 @@ let $editor = (() => {
       let subStr = $textArea.val().substring(start, end);
       window.open('https://cn.bing.com/search?q=' + subStr, '_blank');
     }
-  }
+  };
 
-  function search(srch) {
+  let search = (srch) => {
     let content  = $textArea.val(),
         srchCtnt = srch.content;
 
@@ -161,21 +154,19 @@ let $editor = (() => {
     $textArea[0].selectionEnd = result + srchCtnt.length;
 
     cfg.posHandler(getRow(), getCol());
-  }
+  };
 
-  function getContent() { return $textArea.val(); }
+  let newFile    = () => $textArea.val('');
+  let getContent = () => $textArea.val();
+  let setContent = (data) => $textArea.val(data);
 
-  function setContent(data) { $textArea.val(data); }
-
-  function newFile() { $textArea.val(''); }
-
-  function show(conf) {
+  let show = (conf) => {
     $.extend(cfg, conf);
 
     $('body').append($DOM);
     $textArea.trigger('focus');
     setWrap(cfg.wrap);
-  }
+  };
 
   return {
     show,

@@ -4,6 +4,7 @@
   "description": "Windows 记事本网页版",
   "scripts": {
     "test": "grunt lint",
+    "lines": "echo '项目总代码行数：' $(find . -name '*.js' ! -path './node_modules/*' -o -name '*.css' ! -path './node_modules/*' | xargs cat | grep -v ^$ | wc -l)",
     "build": "grunt build"
   },
   "repository": {

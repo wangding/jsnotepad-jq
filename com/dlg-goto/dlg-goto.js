@@ -3,11 +3,11 @@
 let $dlgGoto = new Dialog('goto');
 
 ((dlg) => {
-  let content = ''
-    + '<label for="">行号(L):</label><br>'
-    + '<input class="txt-line-num" type="text" autofocus><br>'
-    + '<input class="btn-goto btn" type="button" value="转到">'
-    + '<input class="btn-cancel btn" type="button" value="取消">';
+  let content = `
+    <label for="">行号(L):</label><br>
+    <input class="txt-line-num" type="text" autofocus><br>
+    <input class="btn-goto btn" type="button" value="转到">
+    <input class="btn-cancel btn" type="button" value="取消">`;
 
   let $dlg        = dlg.generate(content, '转到指定行');
   let $btnCancel  = $dlg.find('.btn-cancel'),
@@ -17,26 +17,26 @@ let $dlgGoto = new Dialog('goto');
   let $errMsg = $('<div class="err-msg"></div>');
 
   let cfg = {
-    lineNum: 1,
-    totalLine: 1,
+    lineNum:     1,
+    totalLine:   1,
     gotoHandler: null
   };
 
-  function gotoHandler() {
+  let gotoHandler = () => {
     if(!validate()) return;
 
     cfg.gotoHandler($txtLineNum.val()); 
     dlg.destory();
-  }
+  };
 
-  function filterKey(e) {
+  let filterKey = (e) => {
     if(!/[0-9]/.test(e.key)) {
       e.preventDefault();
       showErrMsg('你只能在此输入数字!');
     }
-  }
+  };
 
-  function showErrMsg(msg) {
+  let showErrMsg = (msg) => {
     $errMsg.html(msg);
 
     $($btnGoto.parent()).append($errMsg);
@@ -44,9 +44,9 @@ let $dlgGoto = new Dialog('goto');
       $errMsg.remove();
       $txtLineNum.select();
     }, 3000);
-  }
+  };
 
-  function validate() {
+  let validate = () => {
     if($txtLineNum.val() === '') {
       showErrMsg('行号不能为空！');
       return false;
@@ -71,7 +71,7 @@ let $dlgGoto = new Dialog('goto');
     }
 
     return true;
-  }
+  };
 
   dlg.show = (conf) => {
     $.extend(cfg, conf);
