@@ -68,6 +68,16 @@ module.exports = function (grunt) {
         dest: 'dist'
       }
     },
+    qiniu_qupload: {
+      default_options: {
+        options: {
+          ak: 'QINIU_AK',
+          sk: 'QINIU_SK',
+          bucket: 'app-notepad',
+          assets: [{src: 'dist', prefix: ''}]
+        }
+      }
+    },
     usemin: {
       html: ['dist/index.html']
     },
@@ -88,7 +98,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-usemin');
+  grunt.loadNpmTasks('@wangding/grunt-qiniu-qupload');
 
   grunt.registerTask('lint', ['htmlhint', 'csslint', 'eslint']);
   grunt.registerTask('build', ['copy:html', 'copy:css', 'useminPrepare', 'concat', 'terser', 'cssmin', 'usemin', 'htmlmin', 'imagemin', 'clean:end']);
+  grunt.registerTask('upload', ['qiniu_qupload']);
 };
